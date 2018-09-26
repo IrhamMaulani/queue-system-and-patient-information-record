@@ -29,9 +29,9 @@
             <div class="box-body box-profile">
               <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
 
-              <h3 class="profile-username text-center">Nina Mcintire</h3>
+              <h3 class="profile-username text-center" id="nomor-antrian">0</h3>
 
-              <p class="text-muted text-center">Software Engineer</p>
+              <p class="text-muted text-center"><strong>Nomor Antrian Sekarang</strong></p>
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
@@ -45,7 +45,8 @@
                 </li>
               </ul>
 
-              <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+              <button class="btn btn-primary btn-block" id="tombol-antrian"><b>Nomor Berikutnya</b></button>
+              <button class="btn btn-primary btn-block" id="tombol-reset"><b>Reset</b></button>
             </div>
             <!-- /.box-body -->
           </div>
@@ -345,13 +346,68 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/id.js"></script>
 
-<script>
-var update;
-(update = function() {
-document.getElementById("waktu")
-.innerHTML = moment().format('dddd, Do-mm-YYYY, h:mm:ss') + " WITA";
-})();
-setInterval(update, 1000);
+{{-- <script src="{{ asset('js/antrian.js') }}"></script>
+ --}}
+
+ <script>   let update;
+  (update = function () {
+      document.getElementById("waktu")
+          .innerHTML = moment().format('dddd, Do-mm-YYYY, h:mm:ss') + " WITA";
+  })();
+  setInterval(update, 1000);
+
+  let nomorAntrian = 0;
+
+
+/* TODO Masukan file suara ke object atau array */
+  /* let suara1 = new Audio("{{ asset('sounds/1.wav') }}");
+  let suara2 = new Audio("{{ asset('sounds/2.wav') }}");
+  let suara3 = new Audio("{{ asset('sounds/3.wav') }}");
+  let suara4 = new Audio("{{ asset('sounds/4.wav') }}");
+  let suara5 = new Audio("{{ asset('sounds/5.wav') }}");
+  let suara6 = new Audio("{{ asset('sounds/6.wav') }}");
+  let suara7 = new Audio("{{ asset('sounds/7.wav') }}");
+  let suara8 = new Audio("{{ asset('sounds/8.wav') }}");
+  let suara9 = new Audio("{{ asset('sounds/9.wav') }}");
+   */
+  /* let suara = array(); */
+
+let suara =new Audio(["{{ asset('sounds/1.wav')","{{ asset('sounds/1.wav')","{{ asset('sounds/2.wav')","{{ asset('sounds/3.wav')"]);
+
+
+
+
+$("#tombol-antrian").click(function () {
+  nomorAntrian++;
+  $("#nomor-antrian").html(nomorAntrian);
+  /* $("#tombol-antrian").prop('disabled', true); */
+  console.log(nomorAntrian);
+ /*  if(nomorAntrian == 1){
+  suara.play();
+}
+else if(nomorAntrian == 2){
+suara2.play();
+} */
+
+for (let index = 1; index < 10; index++) {
+  
+  if (nomorAntrian == index) {
+    suara[index].play();
+  }
+  
+}
+});
+
+$("#tombol-reset").click(function () {
+  $("#nomor-antrian").html(nomorAntrian -=nomorAntrian );
+  $("#tombol-antrian").prop('disabled', false);
+  
+});
+
+function putarSuara(params) {
+  
+}
+
 </script>
 @stop
 
