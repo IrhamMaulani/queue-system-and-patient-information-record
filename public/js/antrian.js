@@ -1,8 +1,11 @@
-    
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+
     let update;
   (update = function () {
       document.getElementById("waktu")
-          .innerHTML = moment().format('dddd, Do-mm-YYYY, h:mm:ss') + " WITA";
+          .innerHTML = moment().format('dddd, Do - MMMM - YYYY, h:mm:ss') + " WITA";
   })();
   setInterval(update, 1000);
 
@@ -22,6 +25,11 @@ let suara10 = new Audio("../sounds/sepuluh.wav");
 let nomorUrut = new Audio ("../sounds/nomor-urut.wav");
 
 
+$("#btnBiru").click(function () {
+
+
+});
+
 $("#tombol-antrian").click(function () {
   nomorAntrian++;
   $("#nomor-antrian").html(nomorAntrian);
@@ -33,9 +41,10 @@ $("#tombol-antrian").click(function () {
   setTimeout(putarSuara, 1500) */
   /* putarSuara1(suara1); */
   nomorUrut.play();
+ 
 
   if(nomorAntrian <= 10 ){
-      
+
     switch (nomorAntrian) {
         case 1:
             putarSuara1(suara1);
@@ -103,6 +112,8 @@ $("#tombol-reset").click(function () {
 } */
 
 function putarSuara1(suara) {
+
+    /* TODO : Kerjakan algoritma kondisional di sini */
     function putarSuara() {
         suara.play();
     }

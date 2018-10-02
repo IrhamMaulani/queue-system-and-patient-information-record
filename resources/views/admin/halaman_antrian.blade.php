@@ -8,7 +8,7 @@
   </h1>
   <ol class="breadcrumb">
     <li><a href="/home"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">User profile</li>
+    <li class="active">Antrian</li>
   </ol>
 @stop
 
@@ -22,12 +22,12 @@
     {{-- <section class="content"> --}}
 
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-5">
 
           <!-- Profile Image -->
           <div class="box box-primary">
             <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="Logo">
+              
 
               <h3 class="profile-username text-center" id="nomor-antrian">0</h3>
 
@@ -38,13 +38,36 @@
                   <b>Jumlah Pasien Hari Ini</b> <a class="pull-right" id="jumlah-pasien">0</a>
                 </li>
                 <li class="list-group-item">
+                  <b>Jumlah Pasien Antrian Biru</b> <a class="pull-right" id="jumlah-pasien">0</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Jumlah Pasien Antrian Merah Muda</b> <a class="pull-right" id="jumlah-pasien">0</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Jumlah Pasien Antrian Hijau</b> <a class="pull-right" id="jumlah-pasien">0</a>
+                </li>
+                <li class="list-group-item">
                   <b>Sisa Nomor Antrian</b> <a class="pull-right" id="sisa-nomor">100</a>
                 </li>
                
               </ul>
 
-              <button class="btn btn-primary btn-block" id="tombol-antrian"><b>Nomor Berikutnya</b></button>
-              <button class="btn btn-primary btn-block" id="tombol-reset"><b>Reset</b></button>
+              <div class="row">
+                <div class="col-md-4">
+                  
+                  <button class="btn btn-md btn-primary btn-block" id="btnBiru"> <strong>Biru</strong> </button>
+                </div>
+                <div class="col-md-4">
+                  <button class="btn btn-md btn-light  btn-block" id="btnPink" style="background : rgb(255, 192, 218); color:white;" ><strong> Merah Muda </strong></button>
+                </div>
+                <div class="col-md-4">
+                  <button class="btn btn-md btn-success btn-block "id="btnHijau"><strong> Hijau </strong> </button>
+                </div>
+              </div>
+
+              <br>
+              
+              <button class="btn btn-warning btn-block" id="tombol-reset"><b>Reset</b></button>
             </div>
             <!-- /.box-body -->
           </div>
@@ -52,274 +75,120 @@
 
         </div>
         <!-- /.col -->
-        <div class="col-md-8">
+        <div class="col-md-7">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
-              <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
-              <li><a href="#settings" data-toggle="tab">Settings</a></li>
+              <li class="active"><a href="#activity" data-toggle="tab">Antrian</a></li>
+              <li><a href="#timeline" data-toggle="tab">Rincian Pasien</a></li>
+              <li><a href="#settings" data-toggle="tab">Buat Baru</a></li>
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="activity">
-                <!-- Post -->
-                <div class="post">
-                  <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
-                        <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
-                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                        </span>
-                    <span class="description">Shared publicly - 7:30 PM today</span>
-                  </div>
-                  <!-- /.user-block -->
-                  <p>
-                    Lorem ipsum represents a long-held tradition for designers,
-                    typographers and the like. Some people hate it and argue for
-                    its demise, but others ignore the hate as they create awesome
-                    tools to help create filler text for everyone from bacon lovers
-                    to Charlie Sheen fans.
-                  </p>
-                  <ul class="list-inline">
-                    <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                    <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
-                    </li>
-                    <li class="pull-right">
-                      <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments
-                        (5)</a></li>
-                  </ul>
 
-                  <input class="form-control input-sm" type="text" placeholder="Type a comment">
-                </div>
-                <!-- /.post -->
-
-                <!-- Post -->
-                <div class="post clearfix">
-                  <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg" alt="User Image">
-                        <span class="username">
-                          <a href="#">Sarah Ross</a>
-                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                        </span>
-                    <span class="description">Sent you a message - 3 days ago</span>
-                  </div>
-                  <!-- /.user-block -->
-                  <p>
-                    Lorem ipsum represents a long-held tradition for designers,
-                    typographers and the like. Some people hate it and argue for
-                    its demise, but others ignore the hate as they create awesome
-                    tools to help create filler text for everyone from bacon lovers
-                    to Charlie Sheen fans.
-                  </p>
-
-                  <form class="form-horizontal">
-                    <div class="form-group margin-bottom-none">
-                      <div class="col-sm-9">
-                        <input class="form-control input-sm" placeholder="Response">
-                      </div>
-                      <div class="col-sm-3">
-                        <button type="submit" class="btn btn-danger pull-right btn-block btn-sm">Send</button>
-                      </div>
+                <div class="row">
+                  
+                  <div class="col-md-3">
+                      <div data-toggle="tooltip" title="Panggil Ulang" class="btn btn-danger fa fa-bullhorn fa-3x " style="margin-bottom : 20px; margin-top : 5px;"></div>
                     </div>
-                  </form>
-                </div>
-                <!-- /.post -->
-
-                <!-- Post -->
-                <div class="post">
-                  <div class="user-block">
-                    <img class="img-circle img-bordered-sm" src="../../dist/img/user6-128x128.jpg" alt="User Image">
-                        <span class="username">
-                          <a href="#">Adam Jones</a>
-                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                        </span>
-                    <span class="description">Posted 5 photos - 5 days ago</span>
-                  </div>
-                  <!-- /.user-block -->
-                  <div class="row margin-bottom">
-                    <div class="col-sm-6">
-                      <img class="img-responsive" src="../../dist/img/photo1.png" alt="Photo">
                     </div>
-                    <!-- /.col -->
-                    <div class="col-sm-6">
-                      <div class="row">
-                        <div class="col-sm-6">
-                          <img class="img-responsive" src="../../dist/img/photo2.png" alt="Photo">
-                          <br>
-                          <img class="img-responsive" src="../../dist/img/photo3.jpg" alt="Photo">
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-sm-6">
-                          <img class="img-responsive" src="../../dist/img/photo4.jpg" alt="Photo">
-                          <br>
-                          <img class="img-responsive" src="../../dist/img/photo1.png" alt="Photo">
-                        </div>
-                        <!-- /.col -->
-                      </div>
-                      <!-- /.row -->
-                    </div>
-                    <!-- /.col -->
+                  
+                  <div class="form-group">
+                  <input type="text" class="form-control" id="inputIdentitas" placeholder="Masukan Nomor Identitas Pasien">
                   </div>
-                  <!-- /.row -->
-
-                  <ul class="list-inline">
-                    <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                    <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
-                    </li>
-                    <li class="pull-right">
-                      <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments
-                        (5)</a></li>
-                  </ul>
-
-                  <input class="form-control input-sm" type="text" placeholder="Type a comment">
-                </div>
-                <!-- /.post -->
+                  <div class="form-group">
+                  <button class="btn btn-primary">Cari </button>
+                  </div>
+ 
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="timeline">
-                <!-- The timeline -->
-                <ul class="timeline timeline-inverse">
-                  <!-- timeline time label -->
-                  <li class="time-label">
-                        <span class="bg-red">
-                          10 Feb. 2014
-                        </span>
-                  </li>
-                  <!-- /.timeline-label -->
-                  <!-- timeline item -->
-                  <li>
-                    <i class="fa fa-envelope bg-blue"></i>
-
-                    <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-
-                      <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
-
-                      <div class="timeline-body">
-                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                        weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                        jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                        quora plaxo ideeli hulu weebly balihoo...
-                      </div>
-                      <div class="timeline-footer">
-                        <a class="btn btn-primary btn-xs">Read more</a>
-                        <a class="btn btn-danger btn-xs">Delete</a>
-                      </div>
-                    </div>
-                  </li>
-                  <!-- END timeline item -->
-                  <!-- timeline item -->
-                  <li>
-                    <i class="fa fa-user bg-aqua"></i>
-
-                    <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-
-                      <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request
-                      </h3>
-                    </div>
-                  </li>
-                  <!-- END timeline item -->
-                  <!-- timeline item -->
-                  <li>
-                    <i class="fa fa-comments bg-yellow"></i>
-
-                    <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-
-                      <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-
-                      <div class="timeline-body">
-                        Take me to your leader!
-                        Switzerland is small and neutral!
-                        We are more like Germany, ambitious and misunderstood!
-                      </div>
-                      <div class="timeline-footer">
-                        <a class="btn btn-warning btn-flat btn-xs">View comment</a>
-                      </div>
-                    </div>
-                  </li>
-                  <!-- END timeline item -->
-                  <!-- timeline time label -->
-                  <li class="time-label">
-                        <span class="bg-green">
-                          3 Jan. 2014
-                        </span>
-                  </li>
-                  <!-- /.timeline-label -->
-                  <!-- timeline item -->
-                  <li>
-                    <i class="fa fa-camera bg-purple"></i>
-
-                    <div class="timeline-item">
-                      <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-
-                      <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-
-                      <div class="timeline-body">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                        <img src="http://placehold.it/150x100" alt="..." class="margin">
-                      </div>
-                    </div>
-                  </li>
-                  <!-- END timeline item -->
-                  <li>
-                    <i class="fa fa-clock-o bg-gray"></i>
-                  </li>
-                </ul>
+                  <table class="table">
+                      <thead>
+                        <tr>
+                            
+                          <th>Nomor Buku</th>
+                          <th>Nama Pasien</th>
+                          <th>Nomor Antrian</th>
+                          <th>Tujuan Poli</th>
+                          <th>Panggil Ulang</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>0.312</td>
+                          <td>Eko Simanjuntak</td>
+                          <td style="color : blue;">1 Biru</td>
+                          <td>Gigi</td>
+                          <td><div class="btn	fa fa-bullhorn fa-lg"></div></td>
+                        </tr>
+                        <tr>
+                          <td>0.312</td>
+                          <td>Fahri Hamzah</td>
+                          <td style="color : pink;">1 Merah Muda</td>
+                          <td>Gizi</td>
+                          <td><div class="btn	fa fa-bullhorn fa-lg"></div></td>
+                        </tr>
+                      </tbody>
+                    </table>
               </div>
               <!-- /.tab-pane -->
 
               <div class="tab-pane" id="settings">
                 <form class="form-horizontal">
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+                    {{-- Tombol Submit akan bisa di print --}}
+                    <label for="inputIdentitas" class="col-sm-3 control-label">Nomor Identitas</label>
 
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputName" placeholder="Name">
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="inputIdentitas" placeholder="Masukan Nomor Identitas Pasien">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                    <label for="inputNama" class="col-sm-3 control-label">Nama Pasien</label>
 
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="inputNama" placeholder="Masukan Nama Pasien">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+                    <label for="inputTanggalLahir" class="col-sm-3 control-label">TTL Pasien</label>
 
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputName" placeholder="Name">
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="inputTanggalLahir" placeholder="Tanggal/Bulan/Tahun">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
+                    <label for="inputExperience" class="col-sm-3 control-label">Jenis Kelamin</label>
 
-                    <div class="col-sm-10">
-                      <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
+                    <div class="col-sm-9">
+                        <div class="checkbox-inline">
+                      <input type="radio" class="form-check-input" id="radioJenisKelamin" name="radioJenisKelamin" value="L" checked>Laki-Laki
+                    </div>
+                    <div class="checkbox-inline">
+                      <input type="radio" class="form-check-input" id="radioJenisKelamin" name="radioJenisKelamin" value="P" >Perempuan
+                    </div>
+                        
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
+                    <label for="inputSkills" class="col-sm-3 control-label">Jenis Berobat</label>
 
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+                    <div class="col-sm-9">
+                        
+                            <div class="checkbox-inline">
+                          <input type="radio" class="form-check-input" id="radioJenisBerobat" name="radioJenisBerobat" value="umum" checked>Umum
+                        </div>
+                        <div class="checkbox-inline">
+                          <input type="radio" class="form-check-input" id="radioJenisBerobat" name="radioJenisBerobat" value="askes" >Askes
+                        </div>
+                        <div class="checkbox-inline">
+                            <input type="radio" class="form-check-input" id="radioJenisBerobat" name="radioJenisBerobat" value="askeskin" >Askeskin
+                          </div>
                     </div>
                   </div>
                   <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-danger">Submit</button>
+                    <div class="col-sm-12">
+                      <button  class="btn btn-block btn-success">Submit</button>
                     </div>
                   </div>
                 </form>
