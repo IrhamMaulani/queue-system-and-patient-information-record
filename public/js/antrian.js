@@ -11,24 +11,59 @@ $(document).ready(function(){
 
   let nomorAntrian = 0;
   let jumlahAntrian = 100;
+  let nomorAntrianBiru = 0;
 
-let suara1 = new Audio("../sounds/1.wav");
-let suara2 = new Audio("../sounds/2.wav");
-let suara3 = new Audio("../sounds/3.wav");
-let suara4 = new Audio("../sounds/4.wav");
-let suara5 = new Audio("../sounds/5.wav");
-let suara6 = new Audio("../sounds/6.wav");
-let suara7 = new Audio("../sounds/7.wav");
-let suara8 = new Audio("../sounds/8.wav");
-let suara9 = new Audio("../sounds/9.wav");
-let suara10 = new Audio("../sounds/sepuluh.wav");
-let nomorUrut = new Audio ("../sounds/nomor-urut.wav");
+let suara1 = new Audio("../suara/1.mp3");
+let suara2 = new Audio("../suara/2.mp3");
+let suara3 = new Audio("../suara/3.mp3");
+let suara4 = new Audio("../suara/4.mp3");
+let suara5 = new Audio("../suara/5.mp3");
+let suara6 = new Audio("../suara/6.mp3");
+let suara7 = new Audio("../suara/7.mp3");
+let suara8 = new Audio("../suara/8.mp3");
+let suara9 = new Audio("../suara/9.mp3");
+let suara10 = new Audio("../suara/10.mp3");
+let suara11 = new Audio("../suara/sebelas.mp3");
+let suaraBelas = new Audio("../suara/belas.mp3");
+let suaraPuluh = new Audio("../suara/puluh.mp3");
+let suaraHijau = new Audio("../suara/hijau.mp3");
+let suaraBiru = new Audio("../suara/biru.mp3");
+let suaraPink = new Audio("../suara/merah_muda.mp3");
+let suaraNomorAntrian = new Audio ("../suara/nomor_antrian.mp3");
 
 
 $("#btnBiru").click(function () {
+    nomorAntrianBiru++;
+    $("#jumlah-pasien-biru").html(nomorAntrianBiru);
+    
+    
+  /*   putarSuara(nomorAntrianBiru); */
+  console.log(nomorAntrianBiru);
+    suaraNomorAntrian.play();
+   
+    
+        setTimeout(function() {
+            putarSuara(nomorAntrianBiru);
+            }, 1800);
+   setTimeout(function() {
+    suaraBiru.play();
+    }, 3500);
+    
 
 
 });
+$("#btnBiruUlang").click(function () {
+    suaraNomorAntrian.play();
+   
+    setTimeout(function() {
+        putarSuara(nomorAntrianBiru);
+        }, 1800);
+setTimeout(function() {
+suaraBiru.play();
+}, 3500);
+    
+});
+
 
 $("#tombol-antrian").click(function () {
   nomorAntrian++;
@@ -40,62 +75,20 @@ $("#tombol-antrian").click(function () {
 /* 
   setTimeout(putarSuara, 1500) */
   /* putarSuara1(suara1); */
-  nomorUrut.play();
+  
  
 
-  if(nomorAntrian <= 10 ){
-
-    switch (nomorAntrian) {
-        case 1:
-            putarSuara1(suara1);
-            break;
-
-        case 2:
-            putarSuara1(suara2);
-            break;
-
-        case 3:
-            putarSuara1(suara3);
-            break;
-
-        case 4:
-            putarSuara1(suara4);
-            break;
-
-        case 5:
-            putarSuara1(suara5);
-            break;
-
-        case 6:
-            putarSuara1(suara6);
-            break;
-
-        case 7:
-            putarSuara1(suara7);
-            break;
-
-        case 8:
-            putarSuara1(suara8);
-            break;
-
-        case 9:
-            putarSuara1(suara9);
-            break;
-
-        case 10:
-            putarSuara1(suara10);
-            break;
-    
-        default:
-            break;
-    }
-  }
+  /* angka nya  di cacah (1012 (seribu seratus dua belas)) */
+/*   if(nomor antrian >11){
+      putar suara belas
+      else if (tidak)
+      {
+          
+      }
+      if(fungsi mencacah ambil angka terakhir)
+  } */
   
   /* console.log(nomorAntrian); */
-  console.log(jumlahAntrian);
-  if(jumlahAntrian <= 0){
-    $("#tombol-antrian").prop('disabled', true);    
-  }
   
  
 });
@@ -106,17 +99,99 @@ $("#tombol-reset").click(function () {
 
 });
 
-/* function putarSuara() {
-    suara1.play();
+
+
+function cacahAngka(x){
+    let ribu = x - (x % 1000);
+    let a = ribu / 1000;
+    let ratus = x - (ribu + (x % 100));
+    let b = ratus / 100;
+    let puluh = x - (ribu + ratus + (x % 10));
+    let c = puluh / 10;
+    let d = x % 10;
+
+    /* console.log (a);
+    console.log (b);
+    console.log (c);
+    console.log (d); */
     
-} */
+    let array = [a,b,c,d];
+    return array;
+}
 
-function putarSuara1(suara) {
+function putarSuara(x){
+    let nilai = cacahAngka(x);
+console.log(nilai);
 
-    /* TODO : Kerjakan algoritma kondisional di sini */
-    function putarSuara() {
-        suara.play();
+
+if(nilai[2] == 1 && nilai[3] != 1 && nilai[3] != 0){
+    
+    setTimeout(function() {
+        suaraBelas.play();
+        }, 1000);
     }
-    setTimeout(putarSuara, 1500);
+if(nilai[2] == 2){
+    setTimeout(function() {
+        suaraPuluh.play();
+        }, 1000);
+}
+    
+     if(nilai[3] == 1){
+        if(nilai[3] == 1 && nilai[2] == 0){
+            suara1.play();
+        }
+        if(nilai[2] == 1 && nilai[3] == 1){
+            suara11.play();
+        }
+       /*  else if(nilai[2] == 1 && nilai[3] != 1){
+            suaraBelas.play();
+        }  */
+        /* if(nilai[2] == 1 && nilai[3] != 1 && nilai[3] != 0){
+            suaraBelas.play();
+            }  */
+        
+    }
+    else if (nilai[3] == 2 ){
+        suara2.play();
+    }
+    else if (nilai[3] == 3){
+        suara3.play();
+    }
+    else if (nilai[3] == 4){
+        suara4.play();
+    }
+    else if (nilai[3] == 5){
+        suara5.play();
+    }
+    else if (nilai[3] == 6){
+        suara6.play();
+    }
+    else if (nilai[3] == 7){
+        suara7.play();
+    }
+    else if (nilai[3] == 8){
+        suara8.play();
+    }
+    else if (nilai[3] == 9){
+        suara9.play();
+    }
+    /* jika angka == 10 */
+     else if (nilai[2]== 1 && nilai[3] == 0){
+        suara10.play();
+    }
+
+    
+   /*  else if (nilai[2] == 1 && nilai[3] == 1){
+        suara11.play();
+    } */
+
+
+    /* jika angka == 10 */
+    /* else if (nilai[2]== 1 && nilai[3] == 0){
+        suara10.play();
+    }
+    else if(nilai[2] == 1){
+        
+    } */
     
 }

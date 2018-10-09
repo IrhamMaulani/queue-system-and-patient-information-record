@@ -38,7 +38,7 @@
                   <b>Jumlah Pasien Hari Ini</b> <a class="pull-right" id="jumlah-pasien">0</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Jumlah Pasien Antrian Biru</b> <a class="pull-right" id="jumlah-pasien">0</a>
+                  <b>Jumlah Pasien Antrian Biru</b> <a class="pull-right" id="jumlah-pasien-biru">0</a>
                 </li>
                 <li class="list-group-item">
                   <b>Jumlah Pasien Antrian Merah Muda</b> <a class="pull-right" id="jumlah-pasien">0</a>
@@ -55,13 +55,30 @@
               <div class="row">
                 <div class="col-md-4">
                   
+                  <div class="form-group">
                   <button class="btn btn-md btn-primary btn-block" id="btnBiru"> <strong>Biru</strong> </button>
+                  </div>
+                  <div class="form-group">
+                  <div data-toggle="tooltip" title="Panggil Ulang" id="btnBiruUlang" class="btn btn-primary fa fa-refresh fa-md btn-block "></div>
+                  </div>
+                  
                 </div>
                 <div class="col-md-4">
+                    <div class="form-group">
                   <button class="btn btn-md btn-light  btn-block" id="btnPink" style="background : rgb(255, 192, 218); color:white;" ><strong> Merah Muda </strong></button>
+                    </div>
+                  <div class="form-group">
+                    <div data-toggle="tooltip" title="Panggil Ulang" class="btn btn-light fa fa-refresh fa-md btn-block " style="background : rgb(255, 192, 218); color:white;"></div>
+                    </div>
                 </div>
                 <div class="col-md-4">
-                  <button class="btn btn-md btn-success btn-block "id="btnHijau"><strong> Hijau </strong> </button>
+                    <div class="form-group">
+                  <button  class="btn btn-md btn-success btn-block "id="btnHijau"><strong> Hijau </strong> </button>
+                    </div>
+                    <div class="form-group">
+                        <div data-toggle="tooltip" title="Panggil Ulang" class="btn btn-success fa fa-refresh fa-md btn-block " ></div>
+
+                    </div>
                 </div>
               </div>
 
@@ -88,7 +105,6 @@
                 <div class="row">
                   
                   <div class="col-md-3">
-                      <div data-toggle="tooltip" title="Panggil Ulang" class="btn btn-danger fa fa-bullhorn fa-3x " style="margin-bottom : 20px; margin-top : 5px;"></div>
                     </div>
                     </div>
                   
@@ -98,7 +114,32 @@
                   <div class="form-group">
                   <button class="btn btn-primary">Cari </button>
                   </div>
- 
+                  <h4>Data Pasien</h4>
+                  <label for="inputIdentitas" class="control-label">Nama Pasien</label>
+                  <div class="form-group">
+                      <input type="text" class="form-control" id="namaPasien" readonly>
+                  </div>
+                  <label for="inputIdentitas" class="control-label">Nomor Buku</label>
+                  <div class="form-group">
+                      <input type="text" class="form-control" id="nomorBuku" readonly>
+                  </div>
+                  <label for="inputIdentitas" class="control-label">Masukan Keluhan Pasien</label>
+                  <div class="form-group">
+                    <textarea class="form-control" rows="5" id="keluhanPasien"></textarea>
+                  </div>
+                  <label for="pilihanPoli" class="control-label">Tujuan Poli Pasien</label>
+                  <div class="form-group">
+                    <select class="form-control" id="pilihanPoli">
+                      <option>Gigi</option>
+                      <option>Gizi</option>
+                      <option>Anak</option>
+                      <option>Umum</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-primary" id="submit-pasien">Submit</button>
+                  </div>
+
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="timeline">
@@ -110,7 +151,7 @@
                           <th>Nama Pasien</th>
                           <th>Nomor Antrian</th>
                           <th>Tujuan Poli</th>
-                          <th>Panggil Ulang</th>
+                          <th>BPJS</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -119,14 +160,14 @@
                           <td>Eko Simanjuntak</td>
                           <td style="color : blue;">1 Biru</td>
                           <td>Gigi</td>
-                          <td><div class="btn	fa fa-bullhorn fa-lg"></div></td>
+                          <td>Ya</td>
                         </tr>
                         <tr>
                           <td>0.312</td>
                           <td>Fahri Hamzah</td>
                           <td style="color : pink;">1 Merah Muda</td>
                           <td>Gizi</td>
-                          <td><div class="btn	fa fa-bullhorn fa-lg"></div></td>
+                          <td>Tidak</div></td>
                         </tr>
                       </tbody>
                     </table>
@@ -161,11 +202,11 @@
                     <label for="inputExperience" class="col-sm-3 control-label">Jenis Kelamin</label>
 
                     <div class="col-sm-9">
-                        <div class="checkbox-inline">
-                      <input type="radio" class="form-check-input" id="radioJenisKelamin" name="radioJenisKelamin" value="L" checked>Laki-Laki
+                        <div class="radio-inline">
+                      <label><input type="radio" class="form-check-input" id="radioJenisKelamin" name="radioJenisKelamin" value="L" checked>Laki-Laki</label>
                     </div>
-                    <div class="checkbox-inline">
-                      <input type="radio" class="form-check-input" id="radioJenisKelamin" name="radioJenisKelamin" value="P" >Perempuan
+                    <div class="radio-inline">
+                      <label><input type="radio" class="form-check-input" id="radioJenisKelamin" name="radioJenisKelamin" value="P" >Perempuan</label>
                     </div>
                         
                     </div>
@@ -175,14 +216,14 @@
 
                     <div class="col-sm-9">
                         
-                            <div class="checkbox-inline">
-                          <input type="radio" class="form-check-input" id="radioJenisBerobat" name="radioJenisBerobat" value="umum" checked>Umum
+                            <div class="radio-inline">
+                          <label><input type="radio"  id="radioJenisBerobat" name="radioJenisBerobat" value="umum" checked>Umum</label>
                         </div>
-                        <div class="checkbox-inline">
-                          <input type="radio" class="form-check-input" id="radioJenisBerobat" name="radioJenisBerobat" value="askes" >Askes
+                        <div class="radio-inline">
+                          <label><input type="radio" class="form-check-input" id="radioJenisBerobat" name="radioJenisBerobat" value="askes" >Askes</label>
                         </div>
-                        <div class="checkbox-inline">
-                            <input type="radio" class="form-check-input" id="radioJenisBerobat" name="radioJenisBerobat" value="askeskin" >Askeskin
+                        <div class="radio-inline">
+                            <label><input type="radio" class="form-check-input" id="radioJenisBerobat" name="radioJenisBerobat" value="askeskin" >Askeskin</label>
                           </div>
                     </div>
                   </div>
