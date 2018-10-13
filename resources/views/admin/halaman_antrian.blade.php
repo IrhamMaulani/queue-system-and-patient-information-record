@@ -41,10 +41,10 @@
                   <b>Jumlah Pasien Antrian Biru</b> <a class="pull-right" id="jumlah-pasien-biru">0</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Jumlah Pasien Antrian Merah Muda</b> <a class="pull-right" id="jumlah-pasien">0</a>
+                  <b>Jumlah Pasien Antrian Merah Muda</b> <a class="pull-right" id="jumlah-pasien-pink">0</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Jumlah Pasien Antrian Hijau</b> <a class="pull-right" id="jumlah-pasien">0</a>
+                  <b>Jumlah Pasien Antrian Hijau</b> <a class="pull-right" id="jumlah-pasien-hijau">0</a>
                 </li>
                 <li class="list-group-item">
                   <b>Sisa Nomor Antrian</b> <a class="pull-right" id="sisa-nomor">100</a>
@@ -68,7 +68,7 @@
                   <button class="btn btn-md btn-light  btn-block" id="btnPink" style="background : rgb(255, 192, 218); color:white;" ><strong> Merah Muda </strong></button>
                     </div>
                   <div class="form-group">
-                    <div data-toggle="tooltip" title="Panggil Ulang" class="btn btn-light fa fa-refresh fa-md btn-block " style="background : rgb(255, 192, 218); color:white;"></div>
+                    <div data-toggle="tooltip" id="btnPinkUlang" title="Panggil Ulang" class="btn btn-light fa fa-refresh fa-md btn-block " style="background : rgb(255, 192, 218); color:white;"></div>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -76,7 +76,7 @@
                   <button  class="btn btn-md btn-success btn-block "id="btnHijau"><strong> Hijau </strong> </button>
                     </div>
                     <div class="form-group">
-                        <div data-toggle="tooltip" title="Panggil Ulang" class="btn btn-success fa fa-refresh fa-md btn-block " ></div>
+                        <div data-toggle="tooltip" id="btnHijauUlang" title="Panggil Ulang" class="btn btn-success fa fa-refresh fa-md btn-block " ></div>
 
                     </div>
                 </div>

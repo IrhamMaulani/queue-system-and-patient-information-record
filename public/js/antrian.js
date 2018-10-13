@@ -12,6 +12,12 @@ setInterval(update, 1000);
 let nomorAntrian = 0;
 let jumlahAntrian = 100;
 let nomorAntrianBiru = 0;
+let nomorAntrianPink = 0;
+let nomorAntrianHijau = 0;
+
+    function merubahJumlah() {   
+    $("#jumlah-pasien").html(nomorAntrianBiru + nomorAntrianPink + nomorAntrianHijau);
+    }
 
 let suara1 = new Audio("../suara/1.mp3");
 let suara2 = new Audio("../suara/2.mp3");
@@ -37,19 +43,8 @@ $("#btnBiru").click(function () {
     nomorAntrianBiru++;
     $("#jumlah-pasien-biru").html(nomorAntrianBiru);
 
-
-    /*   putarSuara(nomorAntrianBiru); */
     console.log(nomorAntrianBiru);
-    suaraNomorAntrian.play();
-
-    let jeda = 0;
-    if(nomorAntrianBiru < 10){
-        jeda = 2200;
-    }
-    else{
-        jeda = 2500;
-    }
-
+    suaraNomorAntrian.play();   
 
 
     setTimeout(function () {
@@ -58,33 +53,81 @@ $("#btnBiru").click(function () {
 
     setTimeout(function () {
         suaraBiru.play();
-    }, jeda);
-
-
-    /* setTimeout(function() {
-        putarSuara(nomorAntrianBiru);
-        }, 1800);
-setTimeout(function() {
-suaraBiru.play();
-}, 3500); */
-
-
-
+    }, jedaSuara(nomorAntrianBiru));
+    merubahJumlah();
 });
+
 $("#btnBiruUlang").click(function () {
-    /* suaraNomorAntrian.play(); */
-    konvertAngka(nomorAntrianBiru);
+    suaraNomorAntrian.play();   
+    
 
-    /* setTimeout(function() {
-        putarSuara(nomorAntrianBiru);
-        }, 1800);
-setTimeout(function() {
-suaraBiru.play();
-}, 3500); */
+    setTimeout(function () {
+        konvertAngka(nomorAntrianBiru);
+    }, 1300);
 
-
-
+    setTimeout(function () {
+        suaraBiru.play();
+    }, jedaSuara(nomorAntrianBiru));
 });
+
+$("#btnPink").click(function () {
+    nomorAntrianPink++;
+    $("#jumlah-pasien-pink").html(nomorAntrianPink);
+
+    suaraNomorAntrian.play();   
+
+
+    setTimeout(function () {
+        konvertAngka(nomorAntrianPink);
+    }, 1300);
+
+    setTimeout(function () {
+        suaraPink.play();
+    }, jedaSuara(nomorAntrianPink));
+    merubahJumlah();
+});
+
+$("#btnPinkUlang").click(function () {
+    suaraNomorAntrian.play();   
+    
+    setTimeout(function () {
+        konvertAngka(nomorAntrianPink);
+    }, 1300);
+
+    setTimeout(function () {
+        suaraPink.play();
+    }, jedaSuara(nomorAntrianPink));
+});
+
+$("#btnHijau").click(function () {
+    nomorAntrianHijau++;
+    $("#jumlah-pasien-hijau").html(nomorAntrianHijau);
+
+    suaraNomorAntrian.play();   
+
+
+    setTimeout(function () {
+        konvertAngka(nomorAntrianHijau);
+    }, 1300);
+
+    setTimeout(function () {
+        suaraHijau.play();
+    }, jedaSuara(nomorAntrianHijau));
+    merubahJumlah();
+});
+
+$("#btnHijauUlang").click(function () {
+    suaraNomorAntrian.play();   
+    
+    setTimeout(function () {
+        konvertAngka(nomorAntrianHijau);
+    }, 1300);
+
+    setTimeout(function () {
+        suaraHijau.play();
+    }, jedaSuara(nomorAntrianHijau));
+});
+
 
 
 
@@ -117,7 +160,7 @@ function konvertAngka(n) {
 
         /* return satuan[n-10] + suaraBelas.play(); */
         return suara.play() +
-            setTimeout(function () { suaraBelas.play(); }, 650);
+            setTimeout(function () { suaraBelas.play(); }, 700);
 
     } else if (n < 100 && n > 10) { // 20 -99
         let suara = penentuSuara(satuan[(n - (n % 10)) / 10]);
@@ -191,5 +234,24 @@ function penentuSuara(nilaiSuara) {
     }
     else if (nilaiSuara == 10) {
         return suara10;
+    }
+}
+
+function jedaSuara(nomorAntrian){
+    let jeda = 0;
+    
+    if(nomorAntrianBiru > 30){
+       return jeda = 3000;
+
+    }
+    else if (nomorAntrianBiru > 20){
+        return jeda = 3000;
+    }
+    else if(nomorAntrianBiru > 10 && nomorAntrianBiru <= 20 )
+    {
+       return jeda = 2600;
+    }
+    else{
+       return  jeda = 2200;
     }
 }

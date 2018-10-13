@@ -15,10 +15,10 @@
 
 Auth::routes();
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');;
 });
 
+
+
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('admin/antrian', function () {
-    return view('admin/halaman_antrian');
-});
+Route::get('admin/antrian', 'AntrianController@index')->name('antrian');
