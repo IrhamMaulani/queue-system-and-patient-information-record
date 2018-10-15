@@ -11,8 +11,8 @@ setInterval(update, 1000);
 
 let nomorAntrian = 0;
 let jumlahAntrian = 100;
-let nomorAntrianBiru =parseInt($('#jumlah-pasien-biru').html());
-let nomorAntrianPink =parseInt($('#jumlah-pasien-pink').html());
+let nomorAntrianBiru = parseInt($('#jumlah-pasien-biru').html());
+let nomorAntrianPink = parseInt($('#jumlah-pasien-pink').html());
 let nomorAntrianHijau = parseInt($('#jumlah-pasien-hijau').html());
 let suara1 = new Audio("../suara/1.mp3");
 let suara2 = new Audio("../suara/2.mp3");
@@ -49,14 +49,11 @@ $(document).ready(function () {
     });
 });
 
-
-
-
 $("#btnBiru").click(function () {
     nomorAntrianBiru++;
     let warnaAntrian = 'biru';
 
-   insertData(nomorAntrianBiru,warnaAntrian);
+    insertData(nomorAntrianBiru, warnaAntrian);
 
     $("#jumlah-pasien-biru").html(nomorAntrianBiru);
 
@@ -91,10 +88,10 @@ $("#btnPink").click(function () {
     nomorAntrianPink++;
     let warnaAntrian = 'pink';
 
-   insertData(nomorAntrianPink,warnaAntrian);
+    insertData(nomorAntrianPink, warnaAntrian);
 
 
-    
+
     $("#jumlah-pasien-pink").html(nomorAntrianPink);
 
     suaraNomorAntrian.play();
@@ -127,7 +124,7 @@ $("#btnHijau").click(function () {
 
     let warnaAntrian = 'hijau';
 
-   insertData(nomorAntrianHijau,warnaAntrian);
+    insertData(nomorAntrianHijau, warnaAntrian);
 
 
 
@@ -213,7 +210,7 @@ function jedaSuara(nomorAntrian) {
     }
 }
 
-function insertData(nomorAntrian,warnaAntrian){
+function insertData(nomorAntrian, warnaAntrian) {
 
     $.ajax({
         method: "POST",

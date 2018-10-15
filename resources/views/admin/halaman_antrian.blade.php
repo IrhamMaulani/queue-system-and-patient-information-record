@@ -30,11 +30,33 @@
             <div class="box-body box-profile">
               
 
-              <h3 class="profile-username text-center" id="nomor-antrian">0</h3>
+              
 
-              <p class="text-muted text-center"><strong>Nomor Antrian Sekarang</strong></p>
+              <div class="row">
+                  <div class="col-md-4">
+                      <div class="form-group">
+                      <h2 class="{{-- profile-username --}} text-center" id="jumlah-pasien-biru">{{$antrianBiru}}</h2>
+                      <h4 class="text-muted text-center text-primary "><strong>Nomor Antrian Biru</strong></h4>
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="form-group">
+                      <h2 class="{{-- profile-username --}} text-center" id="jumlah-pasien-pink">{{$antrianPink}}</h2>
+                      <h4 class="text-muted text-center " style="color : rgb(255, 192, 218);"><strong>Nomor Antrian Merah Muda</strong></h4>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="form-group">
+                      <h2 class="{{-- profile-username --}} text-center" id="jumlah-pasien-hijau">{{$antrianHijau}}</h2>
+                      <h4 class="text-muted text-center text-success "><strong>Nomor Antrian Hijau</strong></h4>
+                      </div>
+                  </div>
 
-              <ul class="list-group list-group-unbordered">
+              </div>
+
+              
+
+              {{-- <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
                   <b>Jumlah Pasien Hari Ini</b> <a class="pull-right" id="jumlah-pasien">{{$antrianBiru + $antrianPink + $antrianHijau}}</a>
                 </li>
@@ -51,33 +73,43 @@
                   <b>Sisa Nomor Antrian</b> <a class="pull-right" id="sisa-nomor">100</a>
                 </li>
                
-              </ul>
+              </ul> --}}
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <h1 class="{{-- profile-username --}} text-center" id="jumlah-pasien">{{$antrianBiru + $antrianPink + $antrianHijau}}</h1>
+                          <p class="text-muted text-center text-lg lead text-block"><strong>Antrian Hari Ini</strong></p>
+                          </div>
+
+                  </div>
+              </div>
+
 
               <div class="row">
                 <div class="col-md-4">
                   
                   <div class="form-group">
-                  <button class="btn btn-md btn-primary btn-block" id="btnBiru"> <strong>Biru</strong> </button>
+                  <button class="btn btn-lg btn-primary btn-block" id="btnBiru"> <strong>Biru</strong> </button>
                   </div>
                   <div class="form-group">
-                  <div data-toggle="tooltip" title="Panggil Ulang" id="btnBiruUlang" class="btn btn-primary fa fa-refresh fa-md btn-block "></div>
+                  <div data-toggle="tooltip" title="Panggil Ulang" id="btnBiruUlang" class="btn btn-lg btn-primary fa fa-refresh fa-lg btn-block "></div>
                   </div>
                   
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                  <button class="btn btn-md btn-light  btn-block" id="btnPink" style="background : rgb(255, 192, 218); color:white;" ><strong> Merah Muda </strong></button>
+                  <button class="btn btn-lg btn-light  btn-block" id="btnPink" style="background : rgb(255, 192, 218); color:white;" ><strong> Merah Muda </strong></button>
                     </div>
                   <div class="form-group">
-                    <div data-toggle="tooltip" id="btnPinkUlang" title="Panggil Ulang" class="btn btn-light fa fa-refresh fa-md btn-block " style="background : rgb(255, 192, 218); color:white;"></div>
+                    <div data-toggle="tooltip" id="btnPinkUlang" title="Panggil Ulang" class="btn btn-lg btn-light fa fa-refresh fa-lg btn-block " style="background : rgb(255, 192, 218); color:white;"></div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                  <button  class="btn btn-md btn-success btn-block "id="btnHijau"><strong> Hijau </strong> </button>
+                  <button  class="btn btn-lg btn-success btn-block "id="btnHijau"><strong> Hijau </strong> </button>
                     </div>
                     <div class="form-group">
-                        <div data-toggle="tooltip" id="btnHijauUlang" title="Panggil Ulang" class="btn btn-success fa fa-refresh fa-md btn-block " ></div>
+                        <div data-toggle="tooltip" id="btnHijauUlang" title="Panggil Ulang" class="btn btn-lg btn-success fa fa-refresh fa-lg btn-block " ></div>
 
                     </div>
                 </div>
