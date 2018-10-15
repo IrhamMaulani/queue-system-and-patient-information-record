@@ -3,6 +3,7 @@
 @section('title', 'Antrian')
 
 @section('content_header')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <h1 id="waktu">
     
   </h1>
@@ -35,16 +36,16 @@
 
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>Jumlah Pasien Hari Ini</b> <a class="pull-right" id="jumlah-pasien">0</a>
+                  <b>Jumlah Pasien Hari Ini</b> <a class="pull-right" id="jumlah-pasien">{{$antrianBiru + $antrianPink + $antrianHijau}}</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Jumlah Pasien Antrian Biru</b> <a class="pull-right" id="jumlah-pasien-biru">0</a>
+                  <b>Jumlah Pasien Antrian Biru</b> <a class="pull-right" id="jumlah-pasien-biru">{{$antrianBiru}}</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Jumlah Pasien Antrian Merah Muda</b> <a class="pull-right" id="jumlah-pasien-pink">0</a>
+                  <b>Jumlah Pasien Antrian Merah Muda</b> <a class="pull-right" id="jumlah-pasien-pink">{{$antrianPink}}</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Jumlah Pasien Antrian Hijau</b> <a class="pull-right" id="jumlah-pasien-hijau">0</a>
+                  <b>Jumlah Pasien Antrian Hijau</b> <a class="pull-right" id="jumlah-pasien-hijau">{{$antrianHijau}}</a>
                 </li>
                 <li class="list-group-item">
                   <b>Sisa Nomor Antrian</b> <a class="pull-right" id="sisa-nomor">100</a>
