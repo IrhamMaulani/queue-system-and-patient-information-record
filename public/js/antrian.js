@@ -43,17 +43,23 @@ $("#btnBiru").click(function () {
     nomorAntrianBiru++;
     $("#jumlah-pasien-biru").html(nomorAntrianBiru);
 
-    console.log(nomorAntrianBiru);
-    suaraNomorAntrian.play();   
-
-
+    suaraNomorAntrian.play();
+       
+    
     setTimeout(function () {
         konvertAngka(nomorAntrianBiru);
+        
+        
     }, 1300);
+
+
 
     setTimeout(function () {
         suaraBiru.play();
     }, jedaSuara(nomorAntrianBiru));
+
+    
+    
     merubahJumlah();
 });
 
@@ -70,6 +76,7 @@ $("#btnBiruUlang").click(function () {
     }, jedaSuara(nomorAntrianBiru));
 });
 
+
 $("#btnPink").click(function () {
     nomorAntrianPink++;
     $("#jumlah-pasien-pink").html(nomorAntrianPink);
@@ -84,6 +91,7 @@ $("#btnPink").click(function () {
     setTimeout(function () {
         suaraPink.play();
     }, jedaSuara(nomorAntrianPink));
+
     merubahJumlah();
 });
 
@@ -143,8 +151,8 @@ $("#tombol-reset").click(function () {
 let satuan = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Sebelas"];
 
 function konvertAngka(n) {
-    console.log(n);
-
+    /* console.log(n); */
+    
 
     if (n <= 10) {
         /* satuan[n]; */
@@ -165,42 +173,20 @@ function konvertAngka(n) {
     } else if (n < 100 && n > 10) { // 20 -99
         let suara = penentuSuara(satuan[(n - (n % 10)) / 10]);
         let suaraKedua = penentuSuara(konvertAngka2(n % 10));
-        console.log(n);
+        
 
-        return suara.play() + /* suaraPuluh.play() */ setTimeout(function () { suaraPuluh.play(); }, 550) + setTimeout(function () { suaraKedua.play(); }, 1000);
+        return suara.play() +  setTimeout(function () { suaraPuluh.play(); }, 550) + setTimeout(function () { suaraKedua.play(); }, 1000);
 
-    } else if (n < 1000) {
+     } /* else if (n < 1000) {
         return (n < 200 ? "seratus " : satuan[(n - (n % 100)) / 100] + "ratus ") + konvertAngka(n % 100);
     } else if (n < 1000000) {
         return (n < 2000 ? "seribu " : konvertAngka((n - (n % 1000)) / 1000) + "ribu ") + konvertAngka(n % 1000);
     } else if (n < 1000000000) {
         return konvertAngka((n - (n % 1000000)) / 1000000) + "juta " + konvertAngka(n % 1000000);
-    }
+    } */
+    
+}
 
-}
-function konvertAngka2(n) {
-    if (n < 0) {
-        return "negatif " + konvertAngka(-n);
-    } else if (n < 10) {
-        return satuan[n];
-    } else if (n == 10) { // khusus untuk sepuluh
-        return "sepuluh ";
-    } else if (n == 11) { // khusus untuk sebelas
-        return "sebelas ";
-    } else if (n < 20) {
-        return satuan[n - 10] + "belas ";
-    } else if (n < 100) {
-        return satuan[(n - (n % 10)) / 10] + "puluh " + konvertAngka(n % 10);
-    } else if (n < 1000) {
-        return (n < 200 ? "seratus " : satuan[(n - (n % 100)) / 100] + "ratus ") + konvertAngka(n % 100);
-    } else if (n < 1000000) {
-        return (n < 2000 ? "seribu " : konvertAngka((n - (n % 1000)) / 1000) + "ribu ") + konvertAngka(n % 1000);
-    } else if (n < 1000000000) {
-        return konvertAngka((n - (n % 1000000)) / 1000000) + "juta " + konvertAngka(n % 1000000);
-    } else {
-        return "Angka lebih besar dari 999,999,999 (harus kurang dari 1 Milyar)";
-    }
-}
 function penentuSuara(nilaiSuara) {
     if (nilaiSuara == 0) {
         return kosong;
@@ -236,6 +222,30 @@ function penentuSuara(nilaiSuara) {
         return suara10;
     }
 }
+function konvertAngka2(n) {
+    if (n < 0) {
+        return "negatif " + konvertAngka(-n);
+    } else if (n < 10) {
+        return satuan[n];
+    } else if (n == 10) { // khusus untuk sepuluh
+        return "sepuluh ";
+    } else if (n == 11) { // khusus untuk sebelas
+        return "sebelas ";
+    } else if (n < 20) {
+        return satuan[n - 10] + "belas ";
+    } else if (n < 100) {
+        return satuan[(n - (n % 10)) / 10] + "puluh " + konvertAngka(n % 10);
+    } else if (n < 1000) {
+        return (n < 200 ? "seratus " : satuan[(n - (n % 100)) / 100] + "ratus ") + konvertAngka(n % 100);
+    } else if (n < 1000000) {
+        return (n < 2000 ? "seribu " : konvertAngka((n - (n % 1000)) / 1000) + "ribu ") + konvertAngka(n % 1000);
+    } else if (n < 1000000000) {
+        return konvertAngka2((n - (n % 1000000)) / 1000000) + "juta " + konvertAngka(n % 1000000);
+    } else {
+        return "Angka lebih besar dari 999,999,999 (harus kurang dari 1 Milyar)";
+    }
+}
+
 
 function jedaSuara(nomorAntrian){
     let jeda = 0;
@@ -252,6 +262,7 @@ function jedaSuara(nomorAntrian){
        return jeda = 2600;
     }
     else{
-       return  jeda = 2200;
+       return  jeda = 2100;
     }
 }
+
