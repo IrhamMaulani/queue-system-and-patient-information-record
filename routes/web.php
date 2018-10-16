@@ -22,3 +22,5 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('admin/antrian', 'AntrianController@index')->name('antrian');
+Route::post('admin/antrian', 'AntrianController@store');
+

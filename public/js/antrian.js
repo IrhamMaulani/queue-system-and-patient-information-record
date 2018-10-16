@@ -11,14 +11,9 @@ setInterval(update, 1000);
 
 let nomorAntrian = 0;
 let jumlahAntrian = 100;
-let nomorAntrianBiru = 0;
-let nomorAntrianPink = 0;
-let nomorAntrianHijau = 0;
-
-    function merubahJumlah() {   
-    $("#jumlah-pasien").html(nomorAntrianBiru + nomorAntrianPink + nomorAntrianHijau);
-    }
-
+let nomorAntrianBiru = parseInt($('#jumlah-pasien-biru').html());
+let nomorAntrianPink = parseInt($('#jumlah-pasien-pink').html());
+let nomorAntrianHijau = parseInt($('#jumlah-pasien-hijau').html());
 let suara1 = new Audio("../suara/1.mp3");
 let suara2 = new Audio("../suara/2.mp3");
 let suara3 = new Audio("../suara/3.mp3");
@@ -39,13 +34,33 @@ let suaraNomorAntrian = new Audio("../suara/nomor_antrian.mp3");
 let kosong = new Audio("../suara/kosong.mp3");
 
 
+
+function merubahJumlah() {
+    $("#jumlah-pasien").html(parseInt($('#jumlah-pasien-biru').html()) + parseInt($('#jumlah-pasien-pink').html()) + parseInt($('#jumlah-pasien-hijau').html()));
+}
+
+$(document).ready(function () {
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+
+    });
+});
+
 $("#btnBiru").click(function () {
     nomorAntrianBiru++;
+    let warnaAntrian = 'biru';
+
+    insertData(nomorAntrianBiru, warnaAntrian);
+
     $("#jumlah-pasien-biru").html(nomorAntrianBiru);
 
+    console.log(nomorAntrianBiru);
     suaraNomorAntrian.play();
-       
-    
+
+
     setTimeout(function () {
         konvertAngka(nomorAntrianBiru);
         
@@ -64,8 +79,8 @@ $("#btnBiru").click(function () {
 });
 
 $("#btnBiruUlang").click(function () {
-    suaraNomorAntrian.play();   
-    
+    suaraNomorAntrian.play();
+
 
     setTimeout(function () {
         konvertAngka(nomorAntrianBiru);
@@ -79,9 +94,15 @@ $("#btnBiruUlang").click(function () {
 
 $("#btnPink").click(function () {
     nomorAntrianPink++;
+    let warnaAntrian = 'pink';
+
+    insertData(nomorAntrianPink, warnaAntrian);
+
+
+
     $("#jumlah-pasien-pink").html(nomorAntrianPink);
 
-    suaraNomorAntrian.play();   
+    suaraNomorAntrian.play();
 
 
     setTimeout(function () {
@@ -96,8 +117,8 @@ $("#btnPink").click(function () {
 });
 
 $("#btnPinkUlang").click(function () {
-    suaraNomorAntrian.play();   
-    
+    suaraNomorAntrian.play();
+
     setTimeout(function () {
         konvertAngka(nomorAntrianPink);
     }, 1300);
@@ -109,9 +130,16 @@ $("#btnPinkUlang").click(function () {
 
 $("#btnHijau").click(function () {
     nomorAntrianHijau++;
+
+    let warnaAntrian = 'hijau';
+
+    insertData(nomorAntrianHijau, warnaAntrian);
+
+
+
     $("#jumlah-pasien-hijau").html(nomorAntrianHijau);
 
-    suaraNomorAntrian.play();   
+    suaraNomorAntrian.play();
 
 
     setTimeout(function () {
@@ -125,8 +153,8 @@ $("#btnHijau").click(function () {
 });
 
 $("#btnHijauUlang").click(function () {
-    suaraNomorAntrian.play();   
-    
+    suaraNomorAntrian.play();
+
     setTimeout(function () {
         konvertAngka(nomorAntrianHijau);
     }, 1300);
@@ -146,80 +174,30 @@ $("#tombol-reset").click(function () {
 
 });
 
-
-
-let satuan = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Sebelas"];
+let suara = [kosong, suara1, suara2, suara3, suara4, suara5, suara6, suara7, suara8, suara9, suara10];
 
 function konvertAngka(n) {
-    /* console.log(n); */
-    
+    console.log("N" + n);
+
 
     if (n <= 10) {
-        /* satuan[n]; */
-        let suara = penentuSuara(satuan[n]);
-
-        return suara.play();
+        return suara[n].play();
     } else if (n == 10) { // khusus untuk sepuluh
         return suara10.play();
     } else if (n == 11) { // khusus untuk sebelas
         return suara11.play();
     } else if (n < 20) { // 12 -19
-        let suara = penentuSuara(satuan[n - 10]);
+        suaraBelas.pause();
 
-        /* return satuan[n-10] + suaraBelas.play(); */
-        return suara.play() +
+        return suara[(n - 10)].play() +
             setTimeout(function () { suaraBelas.play(); }, 700);
 
-    } else if (n < 100 && n > 10) { // 20 -99
-        let suara = penentuSuara(satuan[(n - (n % 10)) / 10]);
-        let suaraKedua = penentuSuara(konvertAngka2(n % 10));
-        
+    } else if (n < 100) { // 20 -99
 
-        return suara.play() +  setTimeout(function () { suaraPuluh.play(); }, 550) + setTimeout(function () { suaraKedua.play(); }, 1000);
+        console.log("a" + n);
 
-     } /* else if (n < 1000) {
-        return (n < 200 ? "seratus " : satuan[(n - (n % 100)) / 100] + "ratus ") + konvertAngka(n % 100);
-    } else if (n < 1000000) {
-        return (n < 2000 ? "seribu " : konvertAngka((n - (n % 1000)) / 1000) + "ribu ") + konvertAngka(n % 1000);
-    } else if (n < 1000000000) {
-        return konvertAngka((n - (n % 1000000)) / 1000000) + "juta " + konvertAngka(n % 1000000);
-    } */
-    
-}
+        return suara[(n - (n % 10)) / 10].play() + /* suaraPuluh.play() */ setTimeout(function () { suaraPuluh.play(); }, 550) + setTimeout(function () { suara[(n % 10)].play(); }, 1000);
 
-function penentuSuara(nilaiSuara) {
-    if (nilaiSuara == 0) {
-        return kosong;
-    }
-    else if (nilaiSuara == 1) {
-        return suara1;
-    }
-    else if (nilaiSuara == 2) {
-        return suara2;
-    }
-    else if (nilaiSuara == 3) {
-        return suara3;
-    }
-    else if (nilaiSuara == 4) {
-        return suara4;
-    }
-    else if (nilaiSuara == 5) {
-        return suara5;
-    }
-    else if (nilaiSuara == 6) {
-        return suara6;
-    }
-    else if (nilaiSuara == 7) {
-        return suara7;
-    }
-    else if (nilaiSuara == 8) {
-        return suara8;
-    }
-    else if (nilaiSuara == 9) {
-        return suara9;
-    }
-    else if (nilaiSuara == 10) {
-        return suara10;
     }
 }
 function konvertAngka2(n) {
@@ -247,22 +225,35 @@ function konvertAngka2(n) {
 }
 
 
-function jedaSuara(nomorAntrian){
+function jedaSuara(nomorAntrian) {
     let jeda = 0;
-    
-    if(nomorAntrianBiru > 30){
-       return jeda = 3000;
+
+    if (nomorAntrian > 30) {
+        return jeda = 3000;
 
     }
-    else if (nomorAntrianBiru > 20){
+    else if (nomorAntrian > 20) {
         return jeda = 3000;
     }
-    else if(nomorAntrianBiru > 10 && nomorAntrianBiru <= 20 )
-    {
-       return jeda = 2600;
+    else if (nomorAntrian > 10 && nomorAntrian <= 20) {
+        return jeda = 2500;
     }
-    else{
-       return  jeda = 2100;
+    else {
+        return jeda = 2100;
     }
 }
 
+function insertData(nomorAntrian, warnaAntrian) {
+
+    $.ajax({
+        method: "POST",
+        url: "/admin/antrian",
+        data: {
+            nomorAntrian: nomorAntrian,
+            warnaAntrian: warnaAntrian
+        }
+    })
+        .done(function (data) {
+            console.log(data.success);
+        });
+}
