@@ -34,7 +34,7 @@ class AntrianController extends Controller
         /* dd($antrianHijau); */
 
         /* return view('admin/halaman_antrian'); */
-        return view('admin/halaman_antrian',['antrianBiru' => $antrianBiru->biru ,'antrianPink' => $antrianPink->merah_muda , 'antrianHijau' => $antrianHijau->hijau]);
+        return view('admin/halaman_antrian',['antrianBiru' => $antrianBiru['biru'] ,'antrianPink' => $antrianPink['merah_muda'] , 'antrianHijau' => $antrianHijau['hijau']]);
     }
 
     public function store(Request $request){

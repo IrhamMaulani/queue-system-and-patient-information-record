@@ -145,7 +145,10 @@
                   <input type="text" class="form-control" id="inputIdentitas" placeholder="Masukan Nomor Identitas Pasien">
                   </div>
                   <div class="form-group">
-                  <button class="btn btn-primary">Cari </button>
+                  <button class="btn btn-primary" id="cariData">Cari </button>
+                  </div>
+                  <div class="form-group">
+                  <h4 class="text-danger" id="dataKosongNotif"><strong></strong></h4>
                   </div>
                   <h4>Data Pasien</h4>
                   <label for="inputIdentitas" class="control-label">Nama Pasien</label>
@@ -193,14 +196,14 @@
                           <td>Eko Simanjuntak</td>
                           <td style="color : blue;">1 Biru</td>
                           <td>Gigi</td>
-                          <td>Ya</td>
+                          <td>161921828</td>
                         </tr>
                         <tr>
                           <td>0.312</td>
                           <td>Fahri Hamzah</td>
                           <td style="color : pink;">1 Merah Muda</td>
                           <td>Gizi</td>
-                          <td>Tidak</div></td>
+                          <td>Umum</div></td>
                         </tr>
                       </tbody>
                     </table>
@@ -217,6 +220,30 @@
                       <input type="text" class="form-control" id="inputIdentitas" placeholder="Masukan Nomor Identitas Pasien">
                     </div>
                   </div>
+
+                  <div class="form-group">
+                    <label for="inputSkills" class="col-sm-3 control-label">Jenis Berobat</label>
+
+                    <div class="col-sm-9">
+                        
+                            <div class="radio-inline">
+                          <label><input type="radio"  id="radioJenisBerobatUmum" name="radioJenisBerobat" value="umum" checked>Umum</label>
+                        </div>
+                        <div class="radio-inline">
+                          <label><input type="radio" class="form-check-input" id="radioJenisBerobatBpjs" name="radioJenisBerobat" value="askes" >BPJS</label>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="form-group" id="formBpjs" style="display:none ">
+                    {{-- Tombol Submit akan bisa di print --}}
+                    <label for="inputBPJS" class="col-sm-3 control-label" >Nomor BPJS</label>
+
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="inputBPJS" placeholder="Masukan Nomor BPJS Pasien">
+                    </div>
+                  </div>
+
+
                   <div class="form-group">
                     <label for="inputNama" class="col-sm-3 control-label">Nama Pasien</label>
 
@@ -231,6 +258,37 @@
                       <input type="text" class="form-control" id="inputTanggalLahir" placeholder="Tanggal/Bulan/Tahun">
                     </div>
                   </div>
+
+                  <div class="form-group">
+                    <label for="inputNomorBuku" class="col-sm-3 control-label">Nomor Buku Pasien</label>
+
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="inputNomorBuku" placeholder="Masukan Nomor Buku Pasien">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputAlamat" class="col-sm-3 control-label">Alamat Pasien</label>
+
+                    <div class="col-sm-4">
+                      <input type="text" class="form-control" id="inputAlamat" placeholder="Masukan Alamat Pasien">
+                    </div>
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" id="inpuRtRw" placeholder="RT RW">
+                    </div>
+                    <div class="col-sm-3">
+                      <input type="text" class="form-control" id="inputKelurahan" placeholder="Kelurahan">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inputKepalaKeluarga" class="col-sm-3 control-label">Kepala Keluarga</label>
+
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="inputKepalaKeluarga" placeholder="Masukan Kepala Keluarga Pasien">
+                    </div>
+                  </div>
+
                   <div class="form-group">
                     <label for="inputExperience" class="col-sm-3 control-label">Jenis Kelamin</label>
 
@@ -244,22 +302,7 @@
                         
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label for="inputSkills" class="col-sm-3 control-label">Jenis Berobat</label>
 
-                    <div class="col-sm-9">
-                        
-                            <div class="radio-inline">
-                          <label><input type="radio"  id="radioJenisBerobat" name="radioJenisBerobat" value="umum" checked>Umum</label>
-                        </div>
-                        <div class="radio-inline">
-                          <label><input type="radio" class="form-check-input" id="radioJenisBerobat" name="radioJenisBerobat" value="askes" >Askes</label>
-                        </div>
-                        <div class="radio-inline">
-                            <label><input type="radio" class="form-check-input" id="radioJenisBerobat" name="radioJenisBerobat" value="askeskin" >Askeskin</label>
-                          </div>
-                    </div>
-                  </div>
                   <div class="form-group">
                     <div class="col-sm-12">
                       <button  class="btn btn-block btn-success">Submit</button>
@@ -288,6 +331,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/id.js"></script>
 
 <script src="{{ asset('js/antrian.js') }}"></script>
+<script src="{{ asset('js/antrianpasien.js') }}"></script>
  
 @stop
 
