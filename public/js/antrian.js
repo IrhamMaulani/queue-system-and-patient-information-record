@@ -1,12 +1,16 @@
     //TODO Give all CSRF 
-    
+
     
     let nomorAntrian = 0;
     let jumlahAntrian = 100;
     let nomorAntrianBiru = parseInt($('#jumlah-pasien-biru').html());
     let nomorAntrianPink = parseInt($('#jumlah-pasien-pink').html());
     let nomorAntrianHijau = parseInt($('#jumlah-pasien-hijau').html());
-    let suara1 = new Audio("../suara/1.mp3");
+    /* let suara1 = new Audio("../suara/1.mp3"); */
+    let suara1 = new Howl({
+        src: ['1.wav',],
+        preload : false
+      });
     let suara2 = new Audio("../suara/2.mp3");
     let suara3 = new Audio("../suara/3.mp3");
     let suara4 = new Audio("../suara/4.mp3");
@@ -25,7 +29,7 @@
     let suaraNomorAntrian = new Audio("../suara/nomor_antrian.mp3");
     let kosong = new Audio("../suara/kosong.mp3");
 
-
+    
 
     function merubahJumlah() {
         $("#jumlah-pasien").html(parseInt($('#jumlah-pasien-biru').html()) + parseInt($('#jumlah-pasien-pink').html()) + parseInt($('#jumlah-pasien-hijau').html()));
@@ -60,8 +64,6 @@
 
 
         }, 1300);
-
-
 
         setTimeout(function () {
             suaraBiru.play();
@@ -157,16 +159,9 @@
         }, jedaSuara(nomorAntrianHijau));
     });
 
-
-
-
-
-
-
     $("#tombol-reset").click(function () {
-        $("#nomor-antrian").html(nomorAntrian -= nomorAntrian);
-        $("#tombol-antrian").prop('disabled', false);
-
+        suara1.play();
+        alert("hhh");
     });
 
     let suara = [kosong, suara1, suara2, suara3, suara4, suara5, suara6, suara7, suara8, suara9, suara10];
@@ -195,30 +190,6 @@
 
         }
     }
-    /* function konvertAngka2(n) {
-        if (n < 0) {
-            return "negatif " + konvertAngka2(-n);
-        } else if (n < 10) {
-            return suara[n];
-        } else if (n == 10) { // khusus untuk sepuluh
-            return "sepuluh ";
-        } else if (n == 11) { // khusus untuk sebelas
-            return "sebelas ";
-        } else if (n < 20) {
-            return suara[n - 10] + "belas ";
-        } else if (n < 100) {
-            return suara[(n - (n % 10)) / 10] + "puluh " + konvertAngka2(n % 10);
-        } else if (n < 1000) {
-            return (n < 200 ? "seratus " : satuan[(n - (n % 100)) / 100] + "ratus ") + konvertAngka2(n % 100);
-        } else if (n < 1000000) {
-            return (n < 2000 ? "seribu " : konvertAngka2((n - (n % 1000)) / 1000) + "ribu ") + konvertAngka2(n % 1000);
-        } else if (n < 1000000000) {
-            return konvertAngka2((n - (n % 1000000)) / 1000000) + "juta " + konvertAngka2(n % 1000000);
-        } else {
-            return "Angka lebih besar dari 999,999,999 (harus kurang dari 1 Milyar)";
-        }
-    } */
-
 
     function jedaSuara(nomorAntrian) {
         let jeda = 0;
@@ -263,11 +234,8 @@
             .innerHTML = moment().format('dddd, Do - MMMM - YYYY, h:mm:ss') + " WITA";
     })();
     setInterval(update, 1000);
-
+    
             /* Halaman untuk mengambil data pasien */
-
-
-
             $("#cariData").click(function () {
                 let identitas = $("#inputIdentitas").val();
                 $("#namaPasien").val("");
@@ -289,9 +257,6 @@
                         }
                         
                     });
-                
-    
-    
             });
     
     
