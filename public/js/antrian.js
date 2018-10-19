@@ -25,13 +25,51 @@
     let suaraNomorAntrian = document.getElementById("nomor_antrian");
     let kosong = document.getElementById("kosong");
 
+
+    /* DataTable */
+    /* $(document).ready(function() {
+
+        $('#tablePasienHariIni').DataTable( {
+            ajax: {
+                url: '/admin/antrian/pendaftaran',
+                dataSrc: 'data',
+                "columns": [
+                    { data: 'nomor_buku_pasien' },
+                    { data : 'nama_pasien' },
+                    { data : 'nomor_antrian' },
+                    { data : 'tujuan_poli_pasien' },
+                    { data : 'nomor_bpjs' },
+                ]
+            },
+        } );
+      
+       
+    } ); */
+
+    $(document).ready(function () {
+        $('#tablePasienHariIni').DataTable( {
+         "ajax": "/admin/antrian/pendaftaran",
+            "columns": [
+                { data: 'nomor_buku_pasien' },
+                { data : 'name_pasien' },
+                { data : 'nomor_antrian' },
+                { data : 'tujuan_poli_pasien' },
+                { data : 'nomor_bpjs' }
+            ]
+        } );
+});
+   
+    
+   
+
+    
     
 
     function merubahJumlah() {
         $("#jumlah-pasien").html(parseInt($('#jumlah-pasien-biru').html()) + parseInt($('#jumlah-pasien-pink').html()) + parseInt($('#jumlah-pasien-hijau').html()));
     }
 
-    $(document).ready(function () {
+
 
         $.ajaxSetup({
             headers: {
@@ -39,11 +77,13 @@
             }
 
         });
-    });
+    
 
     $("#btnBiru").click(function () {
         nomorAntrianBiru++;
         let warnaAntrian = 'biru';
+
+        ambilNomorAntrian(nomorAntrianBiru,warnaAntrian);
 
         insertData(nomorAntrianBiru, warnaAntrian);
 
@@ -87,6 +127,8 @@
         nomorAntrianPink++;
         let warnaAntrian = 'pink';
 
+        ambilNomorAntrian(nomorAntrianPink,warnaAntrian);
+
         insertData(nomorAntrianPink, warnaAntrian);
 
 
@@ -123,6 +165,8 @@
         nomorAntrianHijau++;
 
         let warnaAntrian = 'hijau';
+
+        ambilNomorAntrian(nomorAntrianHijau,warnaAntrian);
 
         insertData(nomorAntrianHijau, warnaAntrian);
 
@@ -205,6 +249,14 @@
         }
     }
 
+    let nomorAntrianSekarang;
+
+    function ambilNomorAntrian(nomorAntrian,warnaAntrian){
+        
+        nomorAntrianSekarang = nomorAntrian + " " + warnaAntrian;
+    }
+    
+
     function insertData(nomorAntrian, warnaAntrian) {
         $.ajax({
             method: "POST",
@@ -241,14 +293,57 @@
     
                 $.ajax({
                     method: "GET",
-                    url: "/admin/antrian/" + identitas,
+                    url: "/admin/antrian/pendaftaran/" + identitas,
                     data: identitas,
                 })
                     .done(function (data) {
                         console.log(data);
                         $("#namaPasien").val(data.name_pasien);
                         $("#nomorBuku").val(data.nomor_buku_pasien);
-                        if(data == 'error'){
+                        $("#idPasien").val(data.id);
+                        $("#nomorBpjs").val(data.nomor_bpjs);
+                        
+
+                        
+                        if(data == 'kosong'){
+                            $("#dataKosongNotif").html("Data Tidak Ditemukan");
+                        }
+                        
+                    });
+            });
+
+            $("#submit-pasien").click(function () {
+                //TODO Kerjakan ajax get untuk mengambil data nomorAntrianSekarang ketika di refresh
+
+                let idPasien = $("#idPasien").val();
+                let namaPasien =  $("#namaPasien").val();
+                let nomorBuku = $("#nomorBuku").val();
+                let keluhanPasien = $("#keluhanPasien").val();
+                let poliTujuan = $("#pilihanPoli").val();
+                console.log("nomorAntrian sekarang " + nomorAntrianSekarang);
+    
+                $.ajax({
+                    method: "POST",
+                    url: "/admin/antrian/pendaftaran/",
+                    data: {
+                        idPasien : idPasien,
+                        keluhanPasien : keluhanPasien,
+                        poliTujuan : poliTujuan,
+                        nomorAntrian : nomorAntrianSekarang
+                    },
+                })
+                    .done(function (data) {
+                        console.log("submit pasien " +data);
+                        $("#namaPasien").val("");
+                        $("#nomorBuku").val("");
+                        $("#idPasien").val("");
+                        $("#nomorBpjs").val("");
+                        $("#keluhanPasien").val("");
+                        $('#tablePasienHariIni').DataTable().ajax.reload();
+                        
+
+                        idPasien
+                        if(data == 'kosong'){
                             $("#dataKosongNotif").html("Data Tidak Ditemukan");
                         }
                         

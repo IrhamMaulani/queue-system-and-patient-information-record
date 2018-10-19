@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\NomorAntrian;
+use Auth;
 
 class AntrianController extends Controller
 {
@@ -26,6 +27,7 @@ class AntrianController extends Controller
      */
     public function index()
     {
+        
         
 
         $antrianBiru =  NomorAntrian::orderBy('created_at', 'desc')->whereNotNull('biru')->first();

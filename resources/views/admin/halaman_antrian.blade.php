@@ -3,6 +3,8 @@
 @section('title', 'Antrian')
 
 @section('content_header')
+
+
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <h1 id="waktu">
     
@@ -173,16 +175,20 @@
                     </select>
                   </div>
                   <div class="form-group">
+                    <input type="hidden" name="idPasien" id="idPasien">
+                    <input type="hidden" name="nomorBpjs" id="nomorBpjs">
+                    <input type="hidden" id="token" value="{{ csrf_token() }}">
                     <button class="btn btn-primary" id="submit-pasien">Submit</button>
                   </div>
 
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="timeline">
-                <div class="m-4">
-                <a href="#" class="btn btn-primary pull-right" target="_blank">Print</a>
-                </div>
-                  <table class="table">
+                
+                <a href="#" class="btn btn-primary pull-right" target="_blank" style="margin-bottom : 1.250em;">Print</a>
+                <br>
+               
+                  <table class="table m-4"  id="tablePasienHariIni" style="width:100%;">
                       <thead>
                         <tr>
                             
@@ -193,22 +199,6 @@
                           <th>BPJS</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td>0.312</td>
-                          <td>Eko Simanjuntak</td>
-                          <td style="color : blue;">1 Biru</td>
-                          <td>Gigi</td>
-                          <td>161921828</td>
-                        </tr>
-                        <tr>
-                          <td>0.312</td>
-                          <td>Fahri Hamzah</td>
-                          <td style="color : pink;">1 Merah Muda</td>
-                          <td>Gizi</td>
-                          <td>Umum</div></td>
-                        </tr>
-                      </tbody>
                     </table>
               </div>
               <!-- /.tab-pane -->
@@ -330,27 +320,30 @@
   <!-- /.content-wrapper -->
   <div id="suara">
      
-      <audio  preload="auto" id="satu" src="../suara/1.mp3""></audio>
-      <audio  preload="auto" id="dua" src="../suara/2.mp3""></audio>
-      <audio  preload="auto" id="tiga" src="../suara/3.mp3""></audio>
-      <audio  preload="auto" id="empat" src="../suara/4.mp3""></audio>
-      <audio  preload="auto" id="lima" src="../suara/5.mp3""></audio>
-      <audio  preload="auto" id="enam" src="../suara/6.mp3""></audio>
-      <audio  preload="auto" id="tujuh" src="../suara/7.mp3""></audio>
-      <audio  preload="auto" id="delapan" src="../suara/8.mp3""></audio>
-      <audio  preload="auto" id="sembilan" src="../suara/9.mp3""></audio>
-      <audio  preload="auto" id="sepuluh" src="../suara/10.mp3""></audio>
-      <audio  preload="auto" id="sebelas" src="../suara/sebelas.mp3""></audio>
-      <audio  preload="auto" id="belas" src="../suara/belas.mp3""></audio>
-      <audio  preload="auto" id="puluh" src="../suara/puluh.mp3""></audio>
-      <audio  preload="auto" id="hijau" src="../suara/hijau.mp3""></audio>
-      <audio  preload="auto" id="biru" src="../suara/biru.mp3""></audio>
-      <audio  preload="auto" id="merah_muda" src="../suara/merah_muda.mp3""></audio>
-      <audio  preload="auto" id="nomor_antrian" src="../suara/nomor_antrian.mp3""></audio>
-      <audio  preload="auto" id="kosong" src="../suara/kosong.mp3""></audio>
+      <audio  preload="auto" id="satu" src="../suara/1.mp3"></audio>
+      <audio  preload="auto" id="dua" src="../suara/2.mp3"></audio>
+      <audio  preload="auto" id="tiga" src="../suara/3.mp3"></audio>
+      <audio  preload="auto" id="empat" src="../suara/4.mp3"></audio>
+      <audio  preload="auto" id="lima" src="../suara/5.mp3"></audio>
+      <audio  preload="auto" id="enam" src="../suara/6.mp3"></audio>
+      <audio  preload="auto" id="tujuh" src="../suara/7.mp3"></audio>
+      <audio  preload="auto" id="delapan" src="../suara/8.mp3"></audio>
+      <audio  preload="auto" id="sembilan" src="../suara/9.mp3"></audio>
+      <audio  preload="auto" id="sepuluh" src="../suara/10.mp3"></audio>
+      <audio  preload="auto" id="sebelas" src="../suara/sebelas.mp3"></audio>
+      <audio  preload="auto" id="belas" src="../suara/belas.mp3"></audio>
+      <audio  preload="auto" id="puluh" src="../suara/puluh.mp3"></audio>
+      <audio  preload="auto" id="hijau" src="../suara/hijau.mp3"></audio>
+      <audio  preload="auto" id="biru" src="../suara/biru.mp3"></audio>
+      <audio  preload="auto" id="merah_muda" src="../suara/merah_muda.mp3"></audio>
+      <audio  preload="auto" id="nomor_antrian" src="../suara/nomor_antrian.mp3"></audio>
+      <audio  preload="auto" id="kosong" src="../suara/kosong.mp3"></audio>
     
   </div>
 @stop
+
+
+
 
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
@@ -361,6 +354,8 @@
 <script src="{{ asset('js/antrianpasien.js') }}"></script>
  
 @stop
+
+
 
 
 
