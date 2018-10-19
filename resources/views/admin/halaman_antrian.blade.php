@@ -328,12 +328,34 @@
     <!-- /.content -->
   {{-- </div> --}}
   <!-- /.content-wrapper -->
+  <div id="suara">
+     
+      <audio  preload="auto" id="satu" src="../suara/1.mp3""></audio>
+      <audio  preload="auto" id="dua" src="../suara/2.mp3""></audio>
+      <audio  preload="auto" id="tiga" src="../suara/3.mp3""></audio>
+      <audio  preload="auto" id="empat" src="../suara/4.mp3""></audio>
+      <audio  preload="auto" id="lima" src="../suara/5.mp3""></audio>
+      <audio  preload="auto" id="enam" src="../suara/6.mp3""></audio>
+      <audio  preload="auto" id="tujuh" src="../suara/7.mp3""></audio>
+      <audio  preload="auto" id="delapan" src="../suara/8.mp3""></audio>
+      <audio  preload="auto" id="sembilan" src="../suara/9.mp3""></audio>
+      <audio  preload="auto" id="sepuluh" src="../suara/10.mp3""></audio>
+      <audio  preload="auto" id="sebelas" src="../suara/sebelas.mp3""></audio>
+      <audio  preload="auto" id="belas" src="../suara/belas.mp3""></audio>
+      <audio  preload="auto" id="puluh" src="../suara/puluh.mp3""></audio>
+      <audio  preload="auto" id="hijau" src="../suara/hijau.mp3""></audio>
+      <audio  preload="auto" id="biru" src="../suara/biru.mp3""></audio>
+      <audio  preload="auto" id="merah_muda" src="../suara/merah_muda.mp3""></audio>
+      <audio  preload="auto" id="nomor_antrian" src="../suara/nomor_antrian.mp3""></audio>
+      <audio  preload="auto" id="kosong" src="../suara/kosong.mp3""></audio>
+    
+  </div>
 @stop
 
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/id.js"></script>
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.15/howler.js"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.15/howler.core.min.js"></script>
 
 <script src="{{ asset('js/antrian.js') }}"></script>
 <script src="{{ asset('js/antrianpasien.js') }}"></script>

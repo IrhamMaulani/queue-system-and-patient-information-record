@@ -4,31 +4,26 @@
     let nomorAntrian = 0;
     let jumlahAntrian = 100;
     let nomorAntrianBiru = parseInt($('#jumlah-pasien-biru').html());
-    console.log("haha" + nomorAntrianBiru);
     let nomorAntrianPink = parseInt($('#jumlah-pasien-pink').html());
     let nomorAntrianHijau = parseInt($('#jumlah-pasien-hijau').html());
-    let suara1 = new Audio("../sounds/1.wav");
-  /*   var suara1 = new Howl({
-        src: ['1.wav'],
-        preload : false
-      }); */
-    let suara2 = new Audio("../sounds/2.wav");
-    let suara3 = new Audio("../sounds/3.wav");
-    let suara4 = new Audio("../sounds/4.wav");
-    let suara5 = new Audio("../sounds/5.wav");
-    let suara6 = new Audio("../sounds/6.wav");
-    let suara7 = new Audio("../sounds/7.wav");
-    let suara8 = new Audio("../sounds/8.wav");
-    let suara9 = new Audio("../sounds/9.wav");
-    let suara10 = new Audio("../sounds/sepuluh.wav");
-    let suara11 = new Audio("../sounds/sebelas.wav");
-    let suaraBelas = new Audio("../sounds/belas.wav");
-    let suaraPuluh = new Audio("../sounds/puluh.wav");
-    let suaraHijau = new Audio("../suara/hijau.mp3");
-    let suaraBiru = new Audio("../suara/biru.mp3");
-    let suaraPink = new Audio("../suara/merah_muda.mp3");
-    let suaraNomorAntrian = new Audio("../sounds/nomor-urut.wav");
-    let kosong = new Audio("../suara/kosong.mp3");
+    let suara1 = document.getElementById("satu");
+    let suara2 = document.getElementById("dua");
+    let suara3 = document.getElementById("tiga")
+    let suara4 = document.getElementById("empat");
+    let suara5 = document.getElementById("lima");
+    let suara6 = document.getElementById("enam");
+    let suara7 = document.getElementById("tujuh");
+    let suara8 = document.getElementById("delapan");
+    let suara9 = document.getElementById("sembilan");
+    let suara10 = document.getElementById("sepuluh");
+    let suara11 = document.getElementById("sebelas");
+    let suaraBelas = document.getElementById("belas");
+    let suaraPuluh = document.getElementById("puluh");
+    let suaraHijau = document.getElementById("hijau");
+    let suaraBiru = document.getElementById("biru");
+    let suaraPink = document.getElementById("merah_muda");
+    let suaraNomorAntrian = document.getElementById("nomor_antrian");
+    let kosong = document.getElementById("kosong");
 
     
 
