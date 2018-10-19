@@ -333,7 +333,7 @@
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/id.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.15/howler.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.15/howler.js"></script> --}}
 
 <script src="{{ asset('js/antrian.js') }}"></script>
 <script src="{{ asset('js/antrianpasien.js') }}"></script>

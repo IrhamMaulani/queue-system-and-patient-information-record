@@ -4,29 +4,30 @@
     let nomorAntrian = 0;
     let jumlahAntrian = 100;
     let nomorAntrianBiru = parseInt($('#jumlah-pasien-biru').html());
+    console.log("haha" + nomorAntrianBiru);
     let nomorAntrianPink = parseInt($('#jumlah-pasien-pink').html());
     let nomorAntrianHijau = parseInt($('#jumlah-pasien-hijau').html());
-    /* let suara1 = new Audio("../suara/1.mp3"); */
-    let suara1 = new Howl({
-        src: ['1.wav',],
+    let suara1 = new Audio("../sounds/1.wav");
+  /*   var suara1 = new Howl({
+        src: ['1.wav'],
         preload : false
-      });
-    let suara2 = new Audio("../suara/2.mp3");
-    let suara3 = new Audio("../suara/3.mp3");
-    let suara4 = new Audio("../suara/4.mp3");
-    let suara5 = new Audio("../suara/5.mp3");
-    let suara6 = new Audio("../suara/6.mp3");
-    let suara7 = new Audio("../suara/7.mp3");
-    let suara8 = new Audio("../suara/8.mp3");
-    let suara9 = new Audio("../suara/9.mp3");
-    let suara10 = new Audio("../suara/10.mp3");
-    let suara11 = new Audio("../suara/sebelas.mp3");
-    let suaraBelas = new Audio("../suara/belas.mp3");
-    let suaraPuluh = new Audio("../suara/puluh.mp3");
+      }); */
+    let suara2 = new Audio("../sounds/2.wav");
+    let suara3 = new Audio("../sounds/3.wav");
+    let suara4 = new Audio("../sounds/4.wav");
+    let suara5 = new Audio("../sounds/5.wav");
+    let suara6 = new Audio("../sounds/6.wav");
+    let suara7 = new Audio("../sounds/7.wav");
+    let suara8 = new Audio("../sounds/8.wav");
+    let suara9 = new Audio("../sounds/9.wav");
+    let suara10 = new Audio("../sounds/sepuluh.wav");
+    let suara11 = new Audio("../sounds/sebelas.wav");
+    let suaraBelas = new Audio("../sounds/belas.wav");
+    let suaraPuluh = new Audio("../sounds/puluh.wav");
     let suaraHijau = new Audio("../suara/hijau.mp3");
     let suaraBiru = new Audio("../suara/biru.mp3");
     let suaraPink = new Audio("../suara/merah_muda.mp3");
-    let suaraNomorAntrian = new Audio("../suara/nomor_antrian.mp3");
+    let suaraNomorAntrian = new Audio("../sounds/nomor-urut.wav");
     let kosong = new Audio("../suara/kosong.mp3");
 
     
