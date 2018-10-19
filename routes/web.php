@@ -23,5 +23,11 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('admin/antrian', 'AntrianController@index')->name('antrian');
 Route::post('admin/antrian', 'AntrianController@store');
-Route::post('admin/antrian/{id}', 'AntrianPasienController@show');
+Route::get('admin/antrian/{id}', 'AntrianPasienController@show');
+Route::get('admin/antrian/print','AntrianPasienController@print');
+
+
+/* menambah data pasien di halaman antrian */
+
+Route::post('admin/pasien', 'PasienController@store');
 

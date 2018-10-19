@@ -179,6 +179,9 @@
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="timeline">
+                <div class="m-4">
+                <a href="#" class="btn btn-primary pull-right" target="_blank">Print</a>
+                </div>
                   <table class="table">
                       <thead>
                         <tr>
@@ -211,13 +214,13 @@
               <!-- /.tab-pane -->
 
               <div class="tab-pane" id="settings">
-                <form class="form-horizontal">
+                <form action="post" id="formDataPasienBaru" class="form-horizontal needs-validation">
                   <div class="form-group">
                     {{-- Tombol Submit akan bisa di print --}}
                     <label for="inputIdentitas" class="col-sm-3 control-label">Nomor Identitas</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="inputIdentitas" placeholder="Masukan Nomor Identitas Pasien">
+                      <input type="text" name="inputIdentitas" class="form-control" id="inputIdentitas" placeholder="Masukan Nomor Identitas Pasien" required>
                     </div>
                   </div>
 
@@ -230,7 +233,7 @@
                           <label><input type="radio"  id="radioJenisBerobatUmum" name="radioJenisBerobat" value="umum" checked>Umum</label>
                         </div>
                         <div class="radio-inline">
-                          <label><input type="radio" class="form-check-input" id="radioJenisBerobatBpjs" name="radioJenisBerobat" value="askes" >BPJS</label>
+                          <label><input type="radio" class="form-check-input" id="radioJenisBerobatBpjs" name="radioJenisBerobat" value="bpjs" >BPJS</label>
                         </div>
                     </div>
                   </div>
@@ -239,7 +242,7 @@
                     <label for="inputBPJS" class="col-sm-3 control-label" >Nomor BPJS</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="inputBPJS" placeholder="Masukan Nomor BPJS Pasien">
+                      <input type="text" class="form-control" value="kosong" name="inputBPJS" id="inputBPJS" placeholder="Masukan Nomor BPJS Pasien" required>
                     </div>
                   </div>
 
@@ -248,14 +251,14 @@
                     <label for="inputNama" class="col-sm-3 control-label">Nama Pasien</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="inputNama" placeholder="Masukan Nama Pasien">
+                      <input type="text" class="form-control" name="inputNama" id="inputNama" placeholder="Masukan Nama Pasien" required>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputTanggalLahir" class="col-sm-3 control-label">TTL Pasien</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="inputTanggalLahir" placeholder="Tanggal/Bulan/Tahun">
+                      <input type="text" class="form-control" name="inputTanggalLahir" id="inputTanggalLahir" placeholder="Tanggal/Bulan/Tahun" required>
                     </div>
                   </div>
 
@@ -263,7 +266,7 @@
                     <label for="inputNomorBuku" class="col-sm-3 control-label">Nomor Buku Pasien</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="inputNomorBuku" placeholder="Masukan Nomor Buku Pasien">
+                      <input type="text" class="form-control" name="inputNomorBuku" id="inputNomorBuku" placeholder="Masukan Nomor Buku Pasien" required>
                     </div>
                   </div>
 
@@ -271,13 +274,13 @@
                     <label for="inputAlamat" class="col-sm-3 control-label">Alamat Pasien</label>
 
                     <div class="col-sm-4">
-                      <input type="text" class="form-control" id="inputAlamat" placeholder="Masukan Alamat Pasien">
+                      <input type="text" class="form-control" name="inputAlamat" id="inputAlamat" placeholder="Masukan Alamat Pasien" required>
                     </div>
                     <div class="col-sm-2">
-                      <input type="text" class="form-control" id="inpuRtRw" placeholder="RT RW">
+                      <input type="text" class="form-control" name="inputRtRw" id="inpuRtRw" placeholder="RT RW" required>
                     </div>
                     <div class="col-sm-3">
-                      <input type="text" class="form-control" id="inputKelurahan" placeholder="Kelurahan">
+                      <input type="text" class="form-control" name="inputKelurahan" id="inputKelurahan" placeholder="Kelurahan" required>
                     </div>
                   </div>
 
@@ -285,7 +288,7 @@
                     <label for="inputKepalaKeluarga" class="col-sm-3 control-label">Kepala Keluarga</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="inputKepalaKeluarga" placeholder="Masukan Kepala Keluarga Pasien">
+                      <input type="text" class="form-control" name="inputKepalaKeluarga" id="inputKepalaKeluarga" placeholder="Masukan Kepala Keluarga Pasien" required>
                     </div>
                   </div>
 
@@ -305,7 +308,8 @@
 
                   <div class="form-group">
                     <div class="col-sm-12">
-                      <button  class="btn btn-block btn-success">Submit</button>
+                        <input type="hidden" id="_token" value="{{ csrf_token() }}">
+                     <input type='submit' class="btn btn-block btn-success" id="submitPasienBaru" value="Tambah Data">
                     </div>
                   </div>
                 </form>
