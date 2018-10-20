@@ -1,5 +1,10 @@
     //TODO Give all CSRF 
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
 
+    });
     
     let nomorAntrianSekarang =$('#nomorAntrianTerakhir').val();
     let warnaAntrianSekarang = $('#warnaKartuTerakhir').val();
@@ -90,19 +95,12 @@
 
 
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-
-        });
-
         
+    
 
     $("#btnBiru").click(function () {
         nomorAntrianBiru++;
         let warnaAntrian = 'biru';
-        
 
 
         insertData(nomorAntrianBiru, warnaAntrian);
@@ -110,27 +108,16 @@
         $("#jumlah-pasien-biru").html(nomorAntrianBiru);
 
         console.log(nomorAntrianBiru);
-        /* suaraNomorAntrian.play();
-
-        suaraNomorAntrian.onended = function() {
-            konvertAngka(nomorAntrianBiru);
-        }; */
-
-        
-        /* jeda(suaraNomorAntrian,suaraAntrian);  */
         suaraNomorAntrian.play();
-        suaraNomorAntrian.onended = function() {
-            konvertAngka(nomorAntrianBiru);
-    };
 
         console.log(nomorAntrianBiru + 'biru');
 
 
-        /* setTimeout(function () {
+        setTimeout(function () {
             konvertAngka(nomorAntrianBiru);
 
 
-        }, 1300); */
+        }, 1300);
 
         setTimeout(function () {
             suaraBiru.play();
@@ -250,14 +237,8 @@
         } else if (n == 11) { // khusus untuk sebelas
             return suara11.play();
         } else if (n < 20) { // 12 -19
-           
-           suara[(n - 10)].play();
-
-          let b =  suara[(n - 10)].onended = function() {
-                suaraBelas.play();
-            };
-        
-            return  b;
+            return suara[(n - 10)].play() +
+                setTimeout(function () { suaraBelas.play(); }, 700);
 
         } else if (n < 100) { // 20 -99
 
@@ -278,21 +259,13 @@
             return jeda = 3000;
         }
         else if (nomorAntrian > 10 && nomorAntrian <= 20) {
-            return jeda = 3200;
+            return jeda = 2500;
         }
         else {
             return jeda = 2100;
         }
     }
 
-    /* function jeda(suaraNomorAntrian1,suaraNomorAntrian2){
-
-        console.log("AAAAAAAAAAAAAAAAAAAA"+suaraNomorAntrian1);
-        suaraNomorAntrian1.play();
-        suaraNomorAntrian1.onended = function() {
-            suaraNomorAntrian2;
-    };
-        } */
     function insertData(nomorAntrian, warnaAntrian) {
         $.ajax({
             method: "POST",
@@ -308,16 +281,16 @@
     }
 
 
-            $(document).ready(function () {
-                $('[data-toggle="tooltip"]').tooltip();
-            });
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 
-            let update;
-            (update = function () {
-                document.getElementById("waktu")
-                    .innerHTML = moment().format('dddd, Do - MMMM - YYYY, h:mm:ss') + " WITA";
-            })();
-            setInterval(update, 1000);
+    let update;
+    (update = function () {
+        document.getElementById("waktu")
+            .innerHTML = moment().format('dddd, Do - MMMM - YYYY, h:mm:ss') + " WITA";
+    })();
+    setInterval(update, 1000);
     
             /* Halaman untuk mengambil data pasien */
             $("#cariData").click(function () {
