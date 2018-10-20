@@ -58,9 +58,11 @@ class AntrianPasienController extends Controller
     }
         
 
-    public function print(Request $request){
+    public function print($id){
 
-        return view('admin/print_kartu');
+         $pasien = Pasien::find($id);
+
+        return view('admin/print_kartu',['pasien' => $pasien ]);
         
     }
 }

@@ -30,21 +30,27 @@ class AntrianController extends Controller
         
         
 
-        $antrianBiru =  NomorAntrian::orderBy('created_at', 'desc')->whereNotNull('biru')->first();
-        $antrianPink =  NomorAntrian::orderBy('created_at', 'desc')->whereNotNull('merah_muda')->first();
-        $antrianHijau =  NomorAntrian::orderBy('created_at', 'desc')->whereNotNull('hijau')->first();
+        $antrianBiru =  NomorAntrian::orderBy('created_at', 'desc')->where('warna_kartu','biru')->first();
+        $antrianPink =  NomorAntrian::orderBy('created_at', 'desc')->where('warna_kartu','merah_muda')->first();
+        $antrianHijau =  NomorAntrian::orderBy('created_at', 'desc')->where('warna_kartu','hijau')->first();
+        $antrian = NomorAntrian::orderBy('created_at', 'desc')->first();
+        /* dd($antrian); */
         /* dd($antrianHijau); */
 
         /* return view('admin/halaman_antrian'); */
-        return view('admin/halaman_antrian',['antrianBiru' => $antrianBiru['biru'] ,'antrianPink' => $antrianPink['merah_muda'] , 'antrianHijau' => $antrianHijau['hijau']]);
+        return view('admin/halaman_antrian',['antrianTerakhir' =>$antrian,'antrianBiru' => $antrianBiru['nomor_antrian'] ,'antrianPink' => $antrianPink['nomor_antrian'] , 'antrianHijau' => $antrianHijau['nomor_antrian']]);
     }
 
     public function store(Request $request){
         
         $antrian = new NomorAntrian;
+        $antrian->nomor_antrian = $request->nomorAntrian;
+        $antrian->warna_kartu = $request->warnaAntrian;
+        $antrian->save();
+        return response()->json(['success'=>'Data is successfully added']);
        
 
-        switch ($request ->warnaAntrian) {
+        /* switch ($request ->warnaAntrian) {
             case 'biru':
              $antrian->biru = $request->nomorAntrian;
              $antrian->save();
@@ -66,7 +72,7 @@ class AntrianController extends Controller
             default:
                 return; 
                 break;
-        }
+        } */
        
         
     }

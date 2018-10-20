@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pasien;
+use Illuminate\Support\Facades\DB;
 
 class PasienController extends Controller
 {
@@ -11,15 +12,22 @@ class PasienController extends Controller
         $this->middleware('auth');
     }
 
+    public function index(){
+
+        $pasien = DB::table('pasien')
+        ->get();
+        
+
+        return response()->json(['data'=>$pasien]);
+    
+    }
+
+    
+
     public function store(Request $request){
 
-      
-        
-        
         $alamat = $request->inputAlamat  . $request->inputRtRw . $request->inputKelurahan ;
         /* dd($alamat); */
-      
-        
 
         $pasien = new Pasien;
         $pasien ->identitas_pasien = $request->inputIdentitas;
@@ -37,9 +45,10 @@ class PasienController extends Controller
         $pasien->jenis_kelamin = $request->radioJenisKelamin;        
         $pasien->save();
 
-       
+        $LastInsertId = $pasien->id;
 
-        return response()->json(['success'=>'Data is successfully added']);
+
+        return response()->json(['success'=>'Data is successfully added','idPasienBaru' => $LastInsertId]);
 
     }
 

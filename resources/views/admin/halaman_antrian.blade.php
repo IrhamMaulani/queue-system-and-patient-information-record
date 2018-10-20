@@ -31,8 +31,9 @@
           <div class="box box-primary">
             <div class="box-body box-profile">
               
-
-              
+             
+              <input type="hidden" name="" id="nomorAntrianTerakhir" value="{{$antrianTerakhir ->nomor_antrian}}">
+              <input type="hidden" name="" id="warnaKartuTerakhir" value="{{$antrianTerakhir ->warna_kartu}}">
 
               <div class="row">
                   <div class="col-md-4">
@@ -178,14 +179,14 @@
                     <input type="hidden" name="idPasien" id="idPasien">
                     <input type="hidden" name="nomorBpjs" id="nomorBpjs">
                     <input type="hidden" id="token" value="{{ csrf_token() }}">
-                    <button class="btn btn-primary" id="submit-pasien">Submit</button>
+                    <button class="btn btn-primary" id="submit-antrian-pasien">Submit</button>
                   </div>
 
               </div>
               <!-- /.tab-pane -->
               <div class="tab-pane" id="timeline">
                 
-                <a href="#" class="btn btn-primary pull-right" target="_blank" style="margin-bottom : 1.250em;">Print</a>
+               {{--  <a href="#" class="btn btn-primary pull-right" target="_blank" style="margin-bottom : 1.250em;">Print</a> --}}
                 <br>
                
                   <table class="table m-4"  id="tablePasienHariIni" style="width:100%;">
@@ -248,7 +249,7 @@
                     <label for="inputTanggalLahir" class="col-sm-3 control-label">TTL Pasien</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" name="inputTanggalLahir" id="inputTanggalLahir" placeholder="Tanggal/Bulan/Tahun" required>
+                      <input type="date" class="form-control" name="inputTanggalLahir" id="inputTanggalLahir" placeholder="Tanggal/Bulan/Tahun" required>
                     </div>
                   </div>
 
@@ -300,6 +301,13 @@
                     <div class="col-sm-12">
                         <input type="hidden" id="_token" value="{{ csrf_token() }}">
                      <input type='submit' class="btn btn-block btn-success" id="submitPasienBaru" value="Tambah Data">
+                     <br>
+                     <div class="form-group " id="print" style="display:none">
+                        <div class="col-sm-12">
+                          
+                     <a class="btn btn-block btn-info" id="printTombol" target="_blank" href="#">Print</a>
+                        </div>
+                     </div>
                     </div>
                   </div>
                 </form>
@@ -343,15 +351,27 @@
 @stop
 
 
+@section('css')
+<style>
+.dt-buttons{
+    margin: 20px;
+    position: relative;
+    text-align: right;
+}
 
+</style>
+@stop
 
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/id.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.15/howler.core.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/af-2.3.2/b-1.5.4/b-colvis-1.5.4/b-html5-1.5.4/b-print-1.5.4/rg-1.1.0/sl-1.2.6/datatables.min.js"></script>
 
 <script src="{{ asset('js/antrian.js') }}"></script>
-<script src="{{ asset('js/antrianpasien.js') }}"></script>
+
  
 @stop
 

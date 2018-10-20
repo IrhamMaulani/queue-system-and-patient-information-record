@@ -124,6 +124,11 @@ return [
         [
             'text' => 'Antrian',
             'url'  => 'admin/antrian',
+            'icon' => 'book',
+        ],
+        [
+            'text' => 'Daftar Pasien',
+            'url'  => 'admin/pasien',
             'icon' => 'user',
         ],
        /*  'ACCOUNT SETTINGS',

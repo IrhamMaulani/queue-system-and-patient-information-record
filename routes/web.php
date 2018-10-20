@@ -33,3 +33,16 @@ Route::get('admin/antrian/print','AntrianPasienController@print');
 
 Route::post('admin/pasien', 'PasienController@store');
 
+/* halaman pasien */
+
+Route::get('admin/pasien', function () {
+    return view('admin/daftar_pasien');
+});
+Route::get('admin/pasien/datatable', 'PasienController@index');
+
+/* Route::get('admin/pasien/print', function () {
+    return view('admin/print_kartu');
+}); */
+
+Route::get('admin/pasien/print/{id}', 'AntrianPasienController@print');
+
