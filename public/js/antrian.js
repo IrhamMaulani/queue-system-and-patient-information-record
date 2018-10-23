@@ -58,21 +58,23 @@
                   
                 },
                 {
-                    extend: 'pdfHtml5',
-                    text: 'PDF',
+                    extend: 'excelHtml5',
                     exportOptions: {
                         modifier: {
                             page: 'current'
                         }
-                    }, customize: function ( doc ) {
-                        // Splice the image in after the header, but before the table
+                    }, customize: function ( xlsx ) {
+                        var sheet = xlsx.xl.worksheets['sheet1.xml'];
+ 
+                        // jQuery selector to add a border
+                        $('row c[r*="10"]', sheet).attr( 's', '25' );
                        }
                     
                 }
                
     
             ],
-         "ajax": "/admin/antrian/pendaftaran",
+         "ajax": window.location.href + '/pendaftaran',
             "columns": [
                 { data: 'nomor_buku_pasien' },
                 { data : 'name_pasien' },
@@ -94,7 +96,7 @@
     }
 
 
-
+    console.log("url adalah " + window.location.href );
         
     
 
@@ -269,7 +271,7 @@
     function insertData(nomorAntrian, warnaAntrian) {
         $.ajax({
             method: "POST",
-            url: "/admin/antrian",
+            url: window.location.href,
             data: {
                 nomorAntrian: nomorAntrian,
                 warnaAntrian: warnaAntrian
@@ -302,7 +304,7 @@
     
                 $.ajax({
                     method: "GET",
-                    url: "/admin/antrian/pendaftaran/" + identitas,
+                    url: "antrian/pendaftaran/" + identitas,
                     data: identitas,
                 })
                     .done(function (data) {
@@ -332,7 +334,7 @@
     
                 $.ajax({
                     method: "POST",
-                    url: "/admin/antrian/pendaftaran/",
+                    url: "antrian/pendaftaran/",
                     data: {
                         idPasien : idPasien,
                         keluhanPasien : keluhanPasien,
@@ -386,7 +388,7 @@
     
             $.ajax({
                 method: "POST",
-                url: "/admin/pasien",
+                url: "pasien",
                 contentType: false,
                 processData: false,
                 data: formData

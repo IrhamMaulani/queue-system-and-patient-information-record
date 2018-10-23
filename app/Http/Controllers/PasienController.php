@@ -52,5 +52,9 @@ class PasienController extends Controller
 
     }
 
+    public function show($id){
+        
+    }
+
     
 }

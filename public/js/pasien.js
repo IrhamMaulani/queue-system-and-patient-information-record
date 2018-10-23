@@ -9,11 +9,13 @@ $(document).ready(function () {
 
                 extend: 'print',
                 text: 'Print ',
-                /* autoPrint: false, */
+                autoPrint: false,
                 orientation: 'landscape',
                 exportOptions: {
+                    columns: [ 0, 1, 2, 3 ,4 ,5 ,6 ],
                     modifier: {
                         page: 'current',
+                        columns: ':visible',
                         
                     }
                 },
@@ -21,30 +23,35 @@ $(document).ready(function () {
                     $(win.document.body).find('table').addClass('display').css('font-size', '15px');
                     $(win.document.body).find('h1').css('text-align','center').addClass('header');
                     $(win.document.body).find('.header').html('Daftar Pasien');
+                    /* $(win.document.body).find('button').css('display','none'); */
                     /* $(win.document.body).find('h1').html('Hello'); */
                 },
               
             },
             {
-                extend: 'pdfHtml5',
-                text: 'PDF',
+                extend: 'excelHtml5',
+                orientation: 'landscape',
                 exportOptions: {
+                    columns: [ 0, 1, 2, 3 ,4 ,5 ,6 ],
                     modifier: {
                         page: 'current',
+                        columns: ':visible',
                         
-                    },
-                    exportOptions: {
-                        columns: [ 0, 1, 5 ]
                     }
-                }, customize: function ( doc ) {
-                    // Splice the image in after the header, but before the table
+                    
+                }, customize: function ( xlsx ) {
+                    var sheet = xlsx.xl.worksheets['sheet1.xml'];
+ 
+                        // jQuery selector to add a border
+                        
+                        $('row c[r*="10"]', sheet).attr( 's', '25' );
                    }
                 
             }
            
 
         ],
-     "ajax": "/admin/pasien/datatable",
+     "ajax": "pasien/datatable",
         "columns": [
             { data: 'name_pasien' },
             { data : 'nomor_bpjs' },
@@ -54,18 +61,31 @@ $(document).ready(function () {
             { data : 'jenis_kelamin' },
             { data : 'identitas_pasien' },
             { data : 'kepala_keluarga' },
-            {"defaultContent": "<button class='btn btn-info'>Lihat Data</button>"},
-            {"defaultContent": "<button class='btn btn-warning'>Edit Data!</button>"}
+            {"defaultContent": "<a class='btn btn-block btn-info lihat-data' id='printTombol'  href=''>Lihat Data</a>"},
+            {"defaultContent": "<button class='btn btn-danger delete-data'>Delete Data!</button>"}
         ],
         
     } );
 
-    $('#tablePasien tbody').on( 'click', '.btn', function () {
+    $('#tablePasien tbody').on( 'click', '.lihat-data', function () {
         var data = table.row( $(this).parents('tr') ).data();
+
+        /* $(".lihat-data").attr("href", "pasien/print/1"); */
         alert( data.id );
         console.log(data);
     } );
+
+    $('#tablePasien tbody').on( 'click', '.delete-data', function () {
+        var data = table.row( $(this).parents('tr') ).data();
+
+        /* $(".lihat-data").attr("href", "pasien/print/1"); */
+        alert( 'hapus data' );
+       
+    } );
+
 });
+
+    
 
 
 
