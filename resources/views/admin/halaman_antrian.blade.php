@@ -228,9 +228,12 @@
                   <div class="form-group">
                     <label for="inputTanggalLahir" class="col-sm-3 control-label">TTL Pasien</label>
 
-                    <div class="col-sm-9">
-                      <input type="date" class="form-control" name="inputTanggalLahir" id="inputTanggalLahir" placeholder="Tanggal/Bulan/Tahun" required>
+                    <div class="col-sm-6">
+                      <input type="text" class="form-control" name="inputTempatLahir" id="inputTempatLahir" placeholder="Tempat Lahir" required>
                     </div>
+                    <div class="col-sm-3">
+                        <input type="date" class="form-control" name="inputTanggalLahir" id="inputTanggalLahir" placeholder="Tanggal/Bulan/Tahun" required>
+                      </div>
                   </div>
 
                   <div class="form-group">

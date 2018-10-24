@@ -39,7 +39,10 @@ Route::get('admin/pasien', function () {
     return view('admin/daftar_pasien');
 });
 
+Route::delete('admin/pasien/{id}', 'PasienController@destroy');
+
 Route::get('admin/pasien/datatable', 'PasienController@index');
+Route::put('admin/pasien/detailpasien={id}','PasienController@update');
 Route::get('admin/pasien/detailpasien={id}','PasienController@show');
 
 /* Route::get('admin/pasien/print', function () {

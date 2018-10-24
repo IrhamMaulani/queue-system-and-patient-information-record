@@ -44,7 +44,8 @@ class PasienController extends Controller
         $pasien->nomor_buku_pasien = $request->inputNomorBuku;
         $pasien->alamat_pasien = $alamat;
         $pasien->kepala_keluarga = $request->inputKepalaKeluarga;
-        $pasien->jenis_kelamin = $request->radioJenisKelamin;        
+        $pasien->jenis_kelamin = $request->radioJenisKelamin; 
+        $pasien->tempat_lahir = $request->inputTempatLahir;       
         $pasien->save();
 
         $LastInsertId = $pasien->id;
@@ -66,6 +67,28 @@ class PasienController extends Controller
 
         return view('admin/detail_pasien',['prosesPendaftaran' => $prosesPendaftaran, 'pasien' => $pasien ]);
     }
+    
+    public function destroy($id){
 
+        Pasien::destroy($id);
+        return response()->json(['success'=>'Data is successfully deleted']);
+
+    }
+
+    public function update(Request $request , $id){
+        $pasien = Pasien::find($id);
+
+        $pasien->name_pasien = $request->nama_pasien;
+        $pasien->nomor_bpjs = $request->nomor_bpjs;
+        $pasien->nomor_buku_pasien = $request->nomor_buku_pasien;
+        $pasien->alamat_pasien = $request->alamat_pasien;
+        $pasien->kepala_keluarga = $request->kepala_keluarga;
+
+        $pasien->save();
+
+        /* return redirect('')->with('message', 'Data telah di Update'); */
+        return redirect('admin/pasien/detailpasien='.$id)->with('message', 'Data telah di Update'); 
+
+    }
     
 }

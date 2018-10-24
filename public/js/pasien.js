@@ -1,4 +1,11 @@
 
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+
+});
+
 
 $(document).ready(function () {
     $("button").addClass("btn btn-success");
@@ -75,11 +82,33 @@ $(document).ready(function () {
         console.log(data);
     } );
 
+
     $('#tablePasien tbody').on( 'click', '.delete-data', function () {
         var data = table.row( $(this).parents('tr') ).data();
 
-        /* $(".lihat-data").attr("href", "pasien/print/1"); */
-        alert( 'hapus data' );
+        var confirmation = confirm("Data akan di hapus permanen.Apakah anda ingin melanjutkan?");
+
+        if (confirmation) {
+            $.ajax({
+                method: "POST",
+                url: window.location.href + "/" + data.id,
+                data: { 
+                      _method     :     "delete"       
+                 }    
+              })
+                .done(function( data ) {
+                    alert("Data Pasien Berhasil Di hapus");
+                    $('#tablePasien').DataTable().ajax.reload();  
+                      //$('#formBody').hide();
+                      //$('#table-untuk-detail').show();
+                      //$('#detailNamaBarang').html(data.nama_barang);
+                      //$('#namaBarang').html(data.nama_barang);
+                      //$('#detailJenisBarang').html(data.jenis_barang);
+                      //$('#detailHargaBarang').html(data.harga_barang);
+                      //$('#myModal').modal('show');   
+                });
+               
+           }
        
     } );
 
