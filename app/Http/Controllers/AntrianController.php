@@ -31,7 +31,7 @@ class AntrianController extends Controller
         
 
         $antrianBiru =  NomorAntrian::orderBy('created_at', 'desc')->where('warna_kartu','biru')->first();
-        $antrianPink =  NomorAntrian::orderBy('created_at', 'desc')->where('warna_kartu','merah_muda')->first();
+        $antrianPink =  NomorAntrian::orderBy('created_at', 'desc')->where('warna_kartu','pink')->first();
         $antrianHijau =  NomorAntrian::orderBy('created_at', 'desc')->where('warna_kartu','hijau')->first();
         $antrian = NomorAntrian::orderBy('created_at', 'desc')->first();
         /* dd($antrian); */

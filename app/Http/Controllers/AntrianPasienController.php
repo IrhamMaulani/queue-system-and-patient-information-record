@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Pasien;
 use App\ProsesPendaftaran;
 use Auth;
+use Carbon\Carbon;
 
 class AntrianPasienController extends Controller
 {
@@ -21,6 +22,7 @@ class AntrianPasienController extends Controller
 
         $pendaftaran = DB::table('proses_pendaftaran')
         ->join('pasien','proses_pendaftaran.pasien_id', '=' ,'pasien.id')
+        ->where( 'proses_pendaftaran.created_at', '<' ,Carbon::now())
         ->get();
         
 

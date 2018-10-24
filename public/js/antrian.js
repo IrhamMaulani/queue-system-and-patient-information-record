@@ -96,7 +96,7 @@
     }
 
 
-    console.log("url adalah " + window.location.href );
+    
         
     
 
@@ -226,11 +226,10 @@
     let suara = [kosong, suara1, suara2, suara3, suara4, suara5, suara6, suara7, suara8, suara9, suara10];
 
     function konvertAngka(n) {
-        console.log("N" + n);
+        
 
 
         if (n <= 10) {
-            console.log("eksekusi");
             return suara[n].play();
             
         } else if (n == 10) { // khusus untuk sepuluh
@@ -300,7 +299,7 @@
                 $("#namaPasien").val("");
                 $("#nomorBuku").val("");
                 $("#dataKosongNotif").html("");
-                console.log(identitas);
+                
     
                 $.ajax({
                     method: "GET",
@@ -309,6 +308,7 @@
                 })
                     .done(function (data) {
                         console.log(data);
+                        
                         $("#namaPasien").val(data.name_pasien);
                         $("#nomorBuku").val(data.nomor_buku_pasien);
                         $("#idPasien").val(data.id);
@@ -323,6 +323,8 @@
                     });
             });
 
+            
+
             $("#submit-antrian-pasien").click(function () {
                 //TODO Kerjakan ajax get untuk mengambil data nomorAntrianSekarang ketika di refresh
 
@@ -331,11 +333,14 @@
                 let keluhanPasien = $("#keluhanPasien").val();
                 let poliTujuan = $("#pilihanPoli").val();
                 let inputNomorAntrian = nomorAntrianSekarang + " " + warnaAntrianSekarang;
-    
+                
+                console.log("input"+  keluhanPasien + poliTujuan + inputNomorAntrian);
+                
                 $.ajax({
-                    method: "POST",
-                    url: "antrian/pendaftaran/",
+                    type: "POST",
+                    url: "antrian/pendaftaran/post",
                     data: {
+                        "_method": 'POST',
                         idPasien : idPasien,
                         keluhanPasien : keluhanPasien,
                         poliTujuan : poliTujuan,
@@ -349,8 +354,8 @@
                         $("#idPasien").val("");
                         $("#nomorBpjs").val("");
                         $("#keluhanPasien").val("");
-                        $('#tablePasienHariIni').DataTable().ajax.reload();
-                        
+                        $('#tablePasienHariIni').DataTable().ajax.reload();  
+                        console.log(data);
                         alert(data.success);
                         
                     })  .fail(function() {

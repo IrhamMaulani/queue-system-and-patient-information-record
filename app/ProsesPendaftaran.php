@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class ProsesPendaftaran extends Model
 {
     protected $table = 'proses_pendaftaran';
+
+    public function pasien()
+    {
+        return $this->hasMany('App\Pasien','pasien_id');
+    }
 }

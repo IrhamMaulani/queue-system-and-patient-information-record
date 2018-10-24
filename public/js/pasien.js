@@ -53,15 +53,15 @@ $(document).ready(function () {
         ],
      "ajax": "pasien/datatable",
         "columns": [
-            { data: 'name_pasien' },
+            { data: 'identitas_pasien' },
             { data : 'nomor_bpjs' },
-            { data : 'ttl_pasien' },
             { data : 'nomor_buku_pasien' },
+            { data : 'name_pasien' },
+            { data : 'ttl_pasien' },
             { data : 'alamat_pasien' },
             { data : 'jenis_kelamin' },
-            { data : 'identitas_pasien' },
             { data : 'kepala_keluarga' },
-            {"defaultContent": "<a class='btn btn-block btn-info lihat-data' id='printTombol'  href=''>Lihat Data</a>"},
+            {"defaultContent": "<a class='btn btn-block btn-info lihat-data' id='printTombol' target='_blank'  href=''>Lihat Data</a>"},
             {"defaultContent": "<button class='btn btn-danger delete-data'>Delete Data!</button>"}
         ],
         
@@ -70,8 +70,8 @@ $(document).ready(function () {
     $('#tablePasien tbody').on( 'click', '.lihat-data', function () {
         var data = table.row( $(this).parents('tr') ).data();
 
-        /* $(".lihat-data").attr("href", "pasien/print/1"); */
-        alert( data.id );
+        $(".lihat-data").attr("href", "pasien/detailpasien=" +data.id);
+        
         console.log(data);
     } );
 

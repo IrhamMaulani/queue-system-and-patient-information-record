@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pasien;
+use App\ProsesPendaftaran;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class PasienController extends Controller
 {
@@ -53,7 +55,16 @@ class PasienController extends Controller
     }
 
     public function show($id){
-        
+        $pasien = Pasien::find($id);
+        /* $prosesPendaftaran = ProsesPendaftaran::find($id)->Pasien; */
+        /* $prosesPendaftaran = Pasien::find($id)->prosesPendaftaran; */
+        $prosesPendaftaran = DB::table('proses_pendaftaran')
+        ->join('pasien','proses_pendaftaran.pasien_id', '=' ,'pasien.id')
+        ->where( 'proses_pendaftaran.pasien_id', '=' ,$id)
+        ->get();
+        /* dd($prosesPendaftaran); */
+
+        return view('admin/detail_pasien',['prosesPendaftaran' => $prosesPendaftaran, 'pasien' => $pasien ]);
     }
 
     

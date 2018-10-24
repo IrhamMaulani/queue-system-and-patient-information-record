@@ -12,14 +12,14 @@
             <thead>
               <tr>
                   
-                <th>Nama Pasien</th>
+                <th>Nomor Identitas</th>
                 <th>Nomor BPJS</th>
-                <th>Tempat Tanggal Lahir</th>
                 <th>Nomor Buku</th>
+                <th>Nama Pasien</th>
+                <th>Tanggal Lahir</th>
                 <th>Alamat Pasien</th>
                 <th>Jenis Kelamin</th>
-                <th>Identitas Pasien</th>
-                <th>kepala_keluarga</th>
+                <th>Kepala Keluarga</th>
                 <th>Lihat Data</th>
                 <th>Edit Data</th>
 

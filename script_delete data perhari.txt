@@ -1,0 +1,8 @@
+event delete data
+
+CREATE EVENT hapus_data
+ON SCHEDULE
+EVERY 1 hour
+COMMENT 'Hapus data yang bukan hari ini'
+DO
+DELETE FROM nomor_antrian WHERE created_at < NOW()

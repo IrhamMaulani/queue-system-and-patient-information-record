@@ -24,9 +24,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('admin/antrian', 'AntrianController@index')->name('antrian');
 Route::post('admin/antrian', 'AntrianController@store');
 Route::get('admin/antrian/pendaftaran', 'AntrianPasienController@index');
-Route::post('admin/antrian/pendaftaran', 'AntrianPasienController@store');
 Route::get('admin/antrian/pendaftaran/{id}', 'AntrianPasienController@show');
 Route::get('admin/antrian/print','AntrianPasienController@print');
+Route::post('admin/antrian/pendaftaran/post', 'AntrianPasienController@store');
 
 
 /* menambah data pasien di halaman antrian */
@@ -38,7 +38,9 @@ Route::post('admin/pasien', 'PasienController@store');
 Route::get('admin/pasien', function () {
     return view('admin/daftar_pasien');
 });
+
 Route::get('admin/pasien/datatable', 'PasienController@index');
+Route::get('admin/pasien/detailpasien={id}','PasienController@show');
 
 /* Route::get('admin/pasien/print', function () {
     return view('admin/print_kartu');

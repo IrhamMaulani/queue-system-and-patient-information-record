@@ -56,27 +56,7 @@
                   </div>
 
               </div>
-
               
-
-              {{-- <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
-                  <b>Jumlah Pasien Hari Ini</b> <a class="pull-right" id="jumlah-pasien">{{$antrianBiru + $antrianPink + $antrianHijau}}</a>
-                </li>
-                <li class="list-group-item">
-                  <b>Jumlah Pasien Antrian Biru</b> <a class="pull-right" id="jumlah-pasien-biru">{{$antrianBiru}}</a>
-                </li>
-                <li class="list-group-item">
-                  <b>Jumlah Pasien Antrian Merah Muda</b> <a class="pull-right" id="jumlah-pasien-pink">{{$antrianPink}}</a>
-                </li>
-                <li class="list-group-item">
-                  <b>Jumlah Pasien Antrian Hijau</b> <a class="pull-right" id="jumlah-pasien-hijau">{{$antrianHijau}}</a>
-                </li>
-                <li class="list-group-item">
-                  <b>Sisa Nomor Antrian</b> <a class="pull-right" id="sisa-nomor">100</a>
-                </li>
-               
-              </ul> --}}
               <div class="row">
                   <div class="col-md-12">
                       <div class="form-group">
@@ -178,7 +158,7 @@
                   <div class="form-group">
                     <input type="hidden" name="idPasien" id="idPasien">
                     <input type="hidden" name="nomorBpjs" id="nomorBpjs">
-                    <input type="hidden" id="token" value="{{ csrf_token() }}">
+                    
                     <button class="btn btn-primary" id="submit-antrian-pasien">Submit</button>
                   </div>
 
