@@ -115,13 +115,6 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Homes',
-            'url'         => '/home',
-            'icon'        => 'file',
-            /* 'label'       => 4, */
-            'label_color' => 'success',
-        ],
-        [
             'text' => 'Antrian',
             'url'  => 'admin/antrian',
             'icon' => 'book',
