@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+
+class CreateNomorAntrianTable extends Migration {
+
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('nomor_antrian', function(Blueprint $table)
+		{
+			$table->increments('id');
+			$table->timestamps();
+			$table->integer('nomor_antrian');
+			$table->string('warna_kartu', 191);
+			$table->string('status', 191)->nullable();
+		});
+	}
+
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::drop('nomor_antrian');
+	}
+
+}
