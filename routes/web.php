@@ -15,7 +15,7 @@
 
 Auth::routes();
 Route::get('/', function () {
-    return redirect()->route('login');;
+    return redirect()->route('login');
 });
 
 
@@ -50,4 +50,14 @@ Route::get('admin/pasien/detailpasien={id}','PasienController@show');
 }); */
 
 Route::get('admin/pasien/print/{id}', 'AntrianPasienController@print');
+
+
+Route::get('admin/riwayatpendaftaran', function () {
+    return view('admin/riwayat_pendaftaran');
+});
+
+Route::delete('admin/riwayatpendaftaran/{id}', 'RiwayatPendaftaranController@destroy');
+
+Route::get('admin/riwayatpendaftaran/datatable', 'RiwayatPendaftaranController@index');
+
 

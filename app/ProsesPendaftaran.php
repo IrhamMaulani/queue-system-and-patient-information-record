@@ -10,6 +10,6 @@ class ProsesPendaftaran extends Model
 
     public function pasien()
     {
-        return $this->hasMany('App\Pasien','pasien_id');
+        return $this->hasMany('App\Pasien','proses_pendaftaran_id');
     }
 }

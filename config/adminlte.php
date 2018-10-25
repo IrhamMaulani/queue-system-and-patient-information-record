@@ -124,6 +124,11 @@ return [
             'url'  => 'admin/pasien',
             'icon' => 'user',
         ],
+        [
+            'text' => 'Riwayat Pendaftaran',
+            'url'  => 'admin/riwayatpendaftaran',
+            'icon' => 'history',
+        ],
        /*  'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',

@@ -48,33 +48,7 @@ class AntrianController extends Controller
         $antrian->warna_kartu = $request->warnaAntrian;
         $antrian->save();
         return response()->json(['success'=>'Data is successfully added']);
-       
-
-        /* switch ($request ->warnaAntrian) {
-            case 'biru':
-             $antrian->biru = $request->nomorAntrian;
-             $antrian->save();
-             return response()->json(['success'=>'Data is successfully added']);
-                break;
-
-            case 'hijau':
-             $antrian->hijau = $request->nomorAntrian;
-             $antrian->save();
-             return response()->json(['success'=>'Data is successfully added']);
-                break;
-
-            case 'pink':
-             $antrian->merah_muda = $request->nomorAntrian;
-             $antrian->save();
-             return response()->json(['success'=>'Data is successfully added']);
-                break;
-            
-            default:
-                return; 
-                break;
-        } */
-       
-        
+          
     }
     
 }

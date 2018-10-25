@@ -22,7 +22,7 @@ class AntrianPasienController extends Controller
 
         $pendaftaran = DB::table('proses_pendaftaran')
         ->join('pasien','proses_pendaftaran.pasien_id', '=' ,'pasien.id')
-        ->where( 'proses_pendaftaran.created_at', '<' ,Carbon::now())
+        ->where( 'proses_pendaftaran.created_at', '>' ,Carbon::today())
         ->get();
         
 
@@ -51,7 +51,7 @@ class AntrianPasienController extends Controller
 
     public function show($id){
         /* $pasien = DB::table('pasien')->where('identitas_pasien', $id)->first(); */
-        $pasien = Pasien::where('identitas_pasien', $id) -> first();
+        $pasien = Pasien::where('identitas_pasien', $id)->orWhere('nomor_bpjs', '=', $id) -> first();
 
         if($pasien == null){
             $pasien = "kosong";

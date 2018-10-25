@@ -16,7 +16,7 @@ $(document).ready(function () {
 
                 extend: 'print',
                 text: 'Print ',
-                autoPrint: false,
+                autoPrint: true,
                 orientation: 'landscape',
                 exportOptions: {
                     columns: [ 0, 1, 2, 3 ,4 ,5 ,6 ],

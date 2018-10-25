@@ -57,7 +57,7 @@
         <div class="col-md-9">
                 <div class="box box-default padding" >
                   <h1 class="spacing">Riwayat Pasien</h1>
-                  @foreach ($prosesPendaftaran as $detailPasien)
+                  @forelse ($prosesPendaftaran as $detailPasien)
                   <div class="panel panel-default spacing">
                   <div class="panel-heading putih">
                     
@@ -68,7 +68,18 @@
                         <h4>Keluhan Pasien:  {{$detailPasien->keluhan_pasien}} </h4>
                       </div>
                     </div>
-                  @endforeach
+                    @empty
+                   
+                        <div class="panel panel-default spacing">
+                            <div class="panel-body">
+                              <h1>Tidak Ditemukan Riwayat Pasien</h1>
+                        </div>
+                        </div>
+
+                    
+
+                  
+                  @endforelse
                   
                       
         </div>
