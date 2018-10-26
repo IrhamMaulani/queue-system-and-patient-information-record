@@ -95,14 +95,7 @@
                 })
                     .done(function( data ) {
                         alert("Data Pasien Berhasil Di hapus");
-                        $('#tablePasien').DataTable().ajax.reload();  
-                        //$('#formBody').hide();
-                        //$('#table-untuk-detail').show();
-                        //$('#detailNamaBarang').html(data.nama_barang);
-                        //$('#namaBarang').html(data.nama_barang);
-                        //$('#detailJenisBarang').html(data.jenis_barang);
-                        //$('#detailHargaBarang').html(data.harga_barang);
-                        //$('#myModal').modal('show');   
+                        $('#tablePasien').DataTable().ajax.reload();   
                     });
                 
             }
