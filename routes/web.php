@@ -56,8 +56,13 @@ Route::get('admin/riwayatpendaftaran', function () {
     return view('admin/riwayat_pendaftaran');
 });
 
+Route::get('admin/riwayatpendaftaran/datatable', 'RiwayatPendaftaranController@index');
+Route::get('admin/riwayatpendaftaran/{id}', 'RiwayatPendaftaranController@show');
+
+Route::put('admin/riwayatpendaftaran={id}', 'RiwayatPendaftaranController@update');
+
 Route::delete('admin/riwayatpendaftaran/{id}', 'RiwayatPendaftaranController@destroy');
 
-Route::get('admin/riwayatpendaftaran/datatable', 'RiwayatPendaftaranController@index');
+
 
 

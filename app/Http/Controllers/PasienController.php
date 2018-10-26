@@ -60,7 +60,7 @@ class PasienController extends Controller
         /* $prosesPendaftaran = ProsesPendaftaran::find($id)->Pasien; */
         /* $prosesPendaftaran = Pasien::find($id)->prosesPendaftaran; */
         $prosesPendaftaran = DB::table('proses_pendaftaran')
-        ->join('pasien','proses_pendaftaran.pasien_id', '=' ,'pasien.id')
+        /* ->join('pasien','proses_pendaftaran.pasien_id', '=' ,'pasien.id') */
         ->where( 'proses_pendaftaran.pasien_id', '=' ,$id)
         ->get();
         /* dd($prosesPendaftaran); */
@@ -82,6 +82,8 @@ class PasienController extends Controller
         $pasien->nomor_bpjs = $request->nomor_bpjs;
         $pasien->nomor_buku_pasien = $request->nomor_buku_pasien;
         $pasien->alamat_pasien = $request->alamat_pasien;
+        $pasien->ttl_pasien = $request->tanggal_lahir;
+        $pasien->tempat_lahir = $request->tempat_lahir;
         $pasien->kepala_keluarga = $request->kepala_keluarga;
 
         $pasien->save();

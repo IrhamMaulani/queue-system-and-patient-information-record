@@ -3,7 +3,7 @@
 @section('title', 'Detail Pasien')
 
 @section('content_header')
-    
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @stop
 
 @section('content')
@@ -57,9 +57,12 @@
         <div class="col-md-9">
                 <div class="box box-default padding" >
                   <h1 class="spacing">Riwayat Pasien</h1>
+                  
                   @forelse ($prosesPendaftaran as $detailPasien)
+                  
                   <div class="panel panel-default spacing">
                   <div class="panel-heading putih">
+                  <i class="fa fa-edit fa-lg btn pull-right edit-riwayat" id="{{$detailPasien ->id}}"  title="Edit Profil!"></i>  
                     
                     Tanggal Pasien Berobat: {{date('d -m -Y', strtotime($detailPasien->created_at))}}
                   </div>
@@ -98,7 +101,7 @@
           </div>
           <div class="modal-body">
 
-              <form action="{{url('admin/pasien/detailpasien=')}}{{$pasien->id}}" method="POST">
+              <form action="{{url('admin/pasien/detailpasien=')}}{{$pasien->id}}" id="form-edit-pasien" method="POST" >
               <div class="form-group">
                   <label for="usr">Nama Pasien:</label>
               <input type="text" class="form-control" name="nama_pasien" value="{{$pasien->name_pasien}}">
@@ -120,12 +123,36 @@
                       </div>
 
                       <div class="form-group">
+                        <label for="usr">Tempat Tanggal Lahir:</label>
+                        <div class="row">
+                          <div class="col-md-6"><input type="text" class="form-control" name="tempat_lahir"  id="usr" value="{{$pasien->tempat_lahir}}"></div>
+                          <div class="col-md-6"><input type="text" class="form-control" name="tanggal_lahir"  id="usr" value="{{$pasien->ttl_pasien}}"></div>
+
+                        </div>
+                      </div>
+
+                      <div class="form-group">
                           <label for="usr">Kepala Keluarga:</label> 
                           <input type="text" class="form-control" id="usr" name="kepala_keluarga" value="{{$pasien->kepala_keluarga}}">
                         </div>
                         @csrf
                         <input type="hidden" name="_method" value="PUT">
                         <button type="submit" class="btn btn-primary" name="submit" value="edit">Submit</button>
+
+                        </form>
+
+                        <form action="{{-- {{url('admin/riwayatpendaftaran=')}}{{$pasien->id}} --}}" id="form-edit-riwayat" method="POST" style="display:none;">
+                          <div class="form-group">
+                              <label for="usr">Tujuan Poli:</label> 
+                              <input type="text" class="form-control" id="tujuanPoli" name="tujuanPoli" >
+                            </div>
+                            <div class="form-group">
+                                <label for="usr">Keluhan Pasien:</label> 
+                                <textarea class="form-control" name="keluhanPasien" rows="5" id="keluhanPasien"></textarea>
+                              </div>
+                            @csrf
+                            <input type="hidden" name="_method" value="PUT">
+                            <button type="submit" class="btn btn-primary" name="submit" value="edit">Submit</button>
 
                         </form>
           </div>
@@ -142,7 +169,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
     <style>
       .spacing{
         margin: 15px !important;

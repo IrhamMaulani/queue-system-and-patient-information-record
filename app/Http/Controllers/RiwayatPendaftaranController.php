@@ -27,6 +27,26 @@ class RiwayatPendaftaranController extends Controller
     return response()->json(['data'=>$prosesPendaftaran]);
    }
 
+   public function show($id){
+       $prosesPendaftaran =ProsesPendaftaran::find($id);
+
+       return response()->json($prosesPendaftaran);
+   }
+
+   public function update(Request $request,$id){
+    $prosesPendaftaran = ProsesPendaftaran::find($id);
+
+    $prosesPendaftaran->tujuan_poli_pasien = $request->tujuanPoli;
+    $prosesPendaftaran->keluhan_pasien = $request->keluhanPasien;
+
+    $prosesPendaftaran->save();
+
+    /* return redirect('')->with('message', 'Data telah di Update'); */
+    /* return redirect('admin/pasien/detailpasien='.$id)->with('message', 'Data telah di Update'); */ 
+     return redirect()->back()->with('message', 'Data telah di Update');;
+
+   }
+
    public function destroy($id){
 
     ProsesPendaftaran::destroy($id);

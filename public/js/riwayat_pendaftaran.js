@@ -75,7 +75,7 @@
         $('#tablePasien tbody').on( 'click', '.lihat-data', function () {
             var data = table.row( $(this).parents('tr') ).data();
 
-            $(".lihat-data").attr("href", "pasien/detailpasien=" +data.id);
+            $(".lihat-data").attr("href", "pasien/detailpasien=" +data.pasien_id);
             
             console.log(data);
         } );
