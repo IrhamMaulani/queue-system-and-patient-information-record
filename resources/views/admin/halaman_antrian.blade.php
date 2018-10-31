@@ -153,6 +153,7 @@
                       <option>Gizi</option>
                       <option>Anak</option>
                       <option>Umum</option>
+                      <option>KIA</option>
                     </select>
                   </div>
                   <div class="form-group">

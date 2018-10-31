@@ -23,6 +23,7 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('admin/antrian', 'AntrianController@index')->name('antrian');
 Route::post('admin/antrian', 'AntrianController@store');
+Route::delete('admin/antrian/hapus', 'AntrianController@destroy');
 Route::get('admin/antrian/pendaftaran', 'AntrianPasienController@index');
 Route::get('admin/antrian/pendaftaran/{id}', 'AntrianPasienController@show');
 Route::get('admin/antrian/print','AntrianPasienController@print');

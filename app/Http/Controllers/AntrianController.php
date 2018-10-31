@@ -50,6 +50,12 @@ class AntrianController extends Controller
         return response()->json(['success'=>'Data is successfully added']);
           
     }
+
+    public function destroy(){
+        /* NomorAntrian::destroy('status',NULL); */
+        $nomorAntrian = NomorAntrian::whereNull('status')->delete();
+        return response()->json(['success'=>'Data is successfully deleted']);
+    }
     
 }
 

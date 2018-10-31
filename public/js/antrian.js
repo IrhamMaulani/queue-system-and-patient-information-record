@@ -219,8 +219,30 @@
     });
 
     $("#tombol-reset").click(function () {
-        suara1.play();
-        alert("hhh");
+        let confirmation = confirm("Data akan di hapus permanen.Apakah anda ingin melanjutkan?");
+
+        if (confirmation) {
+            $.ajax({
+                method: "POST",
+                url: window.location.href + '/' + "hapus",
+                data: { 
+                      _method     :     "delete"       
+                 }    
+              })
+                .done(function( data ) {
+                    alert(data.success);
+                    location.reload();
+                    
+                      //$('#formBody').hide();
+                      //$('#table-untuk-detail').show();
+                      //$('#detailNamaBarang').html(data.nama_barang);
+                      //$('#namaBarang').html(data.nama_barang);
+                      //$('#detailJenisBarang').html(data.jenis_barang);
+                      //$('#detailHargaBarang').html(data.harga_barang);
+                      //$('#myModal').modal('show');   
+                });
+               
+           }
     });
 
     let suara = [kosong, suara1, suara2, suara3, suara4, suara5, suara6, suara7, suara8, suara9, suara10];
@@ -246,7 +268,7 @@
 
             return suara[(n - (n % 10)) / 10].play() +  setTimeout(function () { suaraPuluh.play(); }, 550) + setTimeout(function () { suara[(n % 10)].play(); }, 1000);
 
-        }
+        } 
     }
 
     function jedaSuara(nomorAntrian) {
